@@ -1,13 +1,21 @@
 {
   "name": "three-queens-avenue",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "tsc & node ./dist/out-tsc/src/server/websocket.js",
+    "start:angular": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start:dev": "node ./dist/out-tsc/src/server/websocket.js",
+    "build:dev": "tsc",
+    "all": "concurrently --kill-others \"npm run build:dev & npm run start:dev\" \"npm run start:angular\"",
+    "server": "npm run build:dev & npm run start:dev",
+    "client": "npm run start:angular",
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -19,8 +27,12 @@
     "@angular/platform-browser": "~11.0.3",
     "@angular/platform-browser-dynamic": "~11.0.3",
     "@angular/router": "~11.0.3",
+    "concurrently": "^5.3.0",
+    "express": "^4.17.1",
+    "http": "^0.0.1-security",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
+    "ws": "^7.4.1",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
