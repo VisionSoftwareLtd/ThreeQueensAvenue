@@ -5,8 +5,8 @@ import { Subject, Subscription } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  // private static API_URL: string = 'ws://localhost:8081';
-  private static API_URL: string = 'ws://three-queens-avenue.herokuapp.com:8080';
+  // private static API_URL: string = 'ws://localhost:8080';
+  private static API_URL: string = 'ws://three-queens-avenue.herokuapp.com/:8080';
 
   private subject = new Subject();
   private webSocket: WebSocket;
