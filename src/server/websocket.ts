@@ -13,8 +13,10 @@ const app = express();
 
 var __dirname = path.resolve(path.dirname(''));
 
+console.log(`Serving ${__dirname}/dist/ThreeQueensAvenue`);
+
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/three-queens-avenue'));
+app.use(express.static(__dirname + '/dist/ThreeQueensAvenue'));
 /**
  * Web Socket
  */
