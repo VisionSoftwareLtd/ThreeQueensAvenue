@@ -21,9 +21,9 @@
   "dependencies": {
     "@angular/animations": "~11.0.3",
     "@angular/cli": "~11.0.3",
-    "@angular/compiler-cli": "~11.0.3",
     "@angular/common": "~11.0.3",
     "@angular/compiler": "~11.0.3",
+    "@angular/compiler-cli": "~11.0.3",
     "@angular/core": "~11.0.3",
     "@angular/forms": "~11.0.3",
     "@angular/platform-browser": "~11.0.3",
@@ -33,8 +33,8 @@
     "express": "^4.17.1",
     "http": "^0.0.1-security",
     "rxjs": "~6.6.0",
-    "typescript": "~4.0.2",
     "tslib": "^2.0.0",
+    "typescript": "~4.0.2",
     "ws": "^7.4.1",
     "zone.js": "~0.10.2"
   },
@@ -45,6 +45,7 @@
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
+    "enhanced-resolve": "^5.3.1",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.1.0",
