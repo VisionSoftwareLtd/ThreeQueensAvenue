@@ -6,7 +6,6 @@ import { environment } from './../environments/environment';
   providedIn: 'root'
 })
 export class ApiService {
-  // private static API_URL: string = 'ws://localhost:8080';
   private static API_URL: string = environment.production ? 'ws://three-queens-avenue.herokuapp.com/:8080' : 'ws://localhost:8081';
 
   private subject = new Subject();
@@ -17,7 +16,7 @@ export class ApiService {
     this.connected = false;
   }
 
-  login() {
+  login(): void {
     this.webSocket = new WebSocket(ApiService.API_URL);
     const that = this;
     this.webSocket.onopen = function() {

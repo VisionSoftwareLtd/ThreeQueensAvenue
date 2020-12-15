@@ -7,6 +7,8 @@ import { AddressInfo } from 'net';
 import * as path from 'path';
 import * as MessageTypeConstants from './messageTypeConstants.js';
 
+// Beginning panoramic: P1010118.jpg
+
 const app = express();
 var PORT: number;
 var myArgs = process.argv.slice(3);

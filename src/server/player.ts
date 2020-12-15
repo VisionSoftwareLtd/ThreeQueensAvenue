@@ -13,7 +13,7 @@ export class Player {
     this.remoteAddress = remoteAddress;
     this.webSocketClient = webSocketClient;
     this.name = Player.DEFAULT_NAME;
-    this.gameBeingPlayed = GameNames.GAME_LOBBY;
+    this.gameBeingPlayed = GameNames.GAME_EXPLORING;
     this.location = 'Lobby';
   }
 

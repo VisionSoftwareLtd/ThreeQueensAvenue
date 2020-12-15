@@ -1,1 +1,1 @@
-export const GAME_LOBBY = 'Lobby';
+export const GAME_EXPLORING = 'Exploring';

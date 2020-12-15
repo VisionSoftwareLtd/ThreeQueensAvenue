@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiService } from '../api-service.service';
+import * as UrlConstants from '../urlConstants.js';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   username = '';
   subscription: Subscription;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit {
       var jsonData = JSON.parse(data);
       if (jsonData.status) {
         if (jsonData.status == 'Connected') {
-          this.apiService.sendName(that.username);
+          that.apiService.sendName(that.username);
+          that.router.navigateByUrl(UrlConstants.LOBBY);
         }
       }
     });
