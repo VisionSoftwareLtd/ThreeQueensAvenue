@@ -1,0 +1,5 @@
+<div class="img-zoom-container">
+  <img #img [style.width]="yet && imgWidth?imgWidth+'px':null" [style.heigth]="yet && imgHeigth?imgHeigth+'px':null" id="myimage" [src]="imagen" (load)="onLoad()">
+  <div #lens [style.width]="lensSize+'px'" [style.height]="lensSize+'px'"  [style.left] ="posX+'px'" [style.top] ="posY+'px'" class="img-zoom-lens">
+</div>
+

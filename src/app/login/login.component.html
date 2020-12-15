@@ -5,4 +5,6 @@
   <input type="text" [(ngModel)]="username" /><p></p>
   <button (click)="login()">Enter the house</button>
 </div>
-<img src="assets/images/P1010119.JPG" class="img-fluid" />
+<!-- <img src="assets/images/P1010119.JPG" class="img-fluid" /> -->
+<app-pan-image-viewer [zoom]="2" [lensSize]="20" [imgWidth]="500" [img]="img" [divZoomed]="divZoomed"></app-pan-image-viewer>
+<div #divZoomed class="img-zoom-result"></div>

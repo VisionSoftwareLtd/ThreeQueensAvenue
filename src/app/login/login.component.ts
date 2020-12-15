@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   username = '';
   subscription: Subscription;
+  img = 'assets/images/P1000962.JPG';
 
   constructor(private apiService: ApiService, private router: Router) { }
 
