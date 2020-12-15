@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start:dev": "node ./dist/out-tsc/src/server/websocket.js",
+    "start:dev": "node ./dist/out-tsc/src/server/websocket.js -- dev",
     "build:dev": "tsc",
     "all": "concurrently --kill-others \"npm run build:dev & npm run start:dev\" \"npm run start:angular\"",
     "server": "npm run build:dev & npm run start:dev",

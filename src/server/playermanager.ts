@@ -1,4 +1,5 @@
-import { Player } from './player';
+import { Player } from './player.js';
+import * as MessageTypeConstants from './messageTypeConstants.js';
 
 export class PlayerManager {
   private players: Player[];
@@ -31,6 +32,7 @@ export class PlayerManager {
     const playerFound = this.findPlayer(remoteAddress);
     if (playerFound === undefined)
       return;
+    playerFound.getWebSocketClient().send(`{ "${MessageTypeConstants.INFO}" : "Closing connection for ${playerFound.getName()} from ${playerFound.getRemoteAddress()}" }`)
     playerFound.getWebSocketClient().close();
     const index = this.players.indexOf(playerFound);
     if (index == -1)

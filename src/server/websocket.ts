@@ -5,18 +5,24 @@ import { PlayerManager } from './playermanager.js';
 import { Player } from './player.js';
 import { AddressInfo } from 'net';
 import * as path from 'path';
-
-// const PORT = 8081;
-const PORT = 8080;
+import * as MessageTypeConstants from './messageTypeConstants.js';
 
 const app = express();
+var PORT: number;
+var myArgs = process.argv.slice(3);
+console.log('myArgs: ', myArgs);
+if (myArgs[0] == 'dev') {
+   PORT = 8081;
+} else {
+   PORT = 8080;
+   var __dirname = path.resolve(path.dirname(''));
 
-var __dirname = path.resolve(path.dirname(''));
+   console.log(`Serving ${__dirname}/dist/ThreeQueensAvenue`);
 
-console.log(`Serving ${__dirname}/dist/ThreeQueensAvenue`);
+   // Serve only the static files form the dist directory
+   app.use(express.static(__dirname + '/dist/ThreeQueensAvenue'));
+}
 
-// Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/ThreeQueensAvenue'));
 /**
  * Web Socket
  */
@@ -28,7 +34,7 @@ function processIncomingMessage(request, message) {
       if (player) {
          player.setName(message.username);
          var playerNamesConcat = PlayerManager.getInstance().getPlayers().map(player => '"' + player.getName() + '"').join(',');
-         PlayerManager.getInstance().updateAllPlayers(`{ "playerNames" : [${playerNamesConcat}] }`);
+         PlayerManager.getInstance().updateAllPlayers(`{ "${MessageTypeConstants.PLAYER_NAMES}" : [${playerNamesConcat}] }`);
       }
    }
 }
@@ -40,7 +46,7 @@ webSocketServer.on('connection', (webSocketClient, request) => {
    //  webSocketClient.send(<The initial data, like the player list perhaps>);
    const canAddPlayer = PlayerManager.getInstance().addPlayer(new Player(request.connection.remoteAddress, webSocketClient));
    if (!canAddPlayer) {
-      webSocketClient.send(`{ "error" : "Connection already established from ${request.connection.remoteAddress}.  If the problem persists, try refreshing the page." }`)
+      webSocketClient.send(`{ "${MessageTypeConstants.ERROR}" : "Connection already established from ${request.connection.remoteAddress}.  If the problem persists, try refreshing the page." }`)
       webSocketClient.close();
    }
    webSocketClient.on('message', (data) => {

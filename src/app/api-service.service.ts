@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
+import { environment } from './../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
   // private static API_URL: string = 'ws://localhost:8080';
-  private static API_URL: string = 'ws://three-queens-avenue.herokuapp.com/:8080';
+  private static API_URL: string = environment.production ? 'ws://three-queens-avenue.herokuapp.com/:8080' : 'ws://localhost:8081';
 
   private subject = new Subject();
   private webSocket: WebSocket;
