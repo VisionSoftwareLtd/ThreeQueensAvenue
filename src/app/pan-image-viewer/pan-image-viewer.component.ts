@@ -1,6 +1,7 @@
-import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
 import { Location } from '../model/location';
 import { LocationService } from '../location.service';
+import { LocationPointer } from '../model/location-pointer';
 
 @Component({
   selector: 'app-pan-image-viewer',
@@ -16,6 +17,7 @@ export class PanImageViewerComponent implements OnInit {
   @Input() imgHeight: number;
   @Input() bgPosX: number = 0;
   @Input() bgRepeats: boolean = true;
+  @Output() locationClickEvent:EventEmitter<LocationPointer> = new EventEmitter<LocationPointer>();
   
   posX: number = 0; // Used for lens
   posY: number = 0; // Used for lens
@@ -150,5 +152,11 @@ export class PanImageViewerComponent implements OnInit {
 
   getWindowWidth() {
     return window.innerWidth;
+  }
+
+  onLocationClicked(locationPointer: LocationPointer) {
+    if (this.locationClickEvent) {
+      this.locationClickEvent.emit(locationPointer);
+    }
   }
 }

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiService } from '../api-service.service';
+import { LocationPointer } from '../model/location-pointer';
 import * as UrlConstants from '../urlConstants.js';
 
 @Component({
@@ -10,7 +11,6 @@ import * as UrlConstants from '../urlConstants.js';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   username = '';
   subscription: Subscription;
   img = 'assets/images/P1010118.JPG';
@@ -33,5 +33,13 @@ export class LoginComponent implements OnInit {
       }
     });
     this.apiService.login();
+  }
+
+  onLocationClicked(locationPointer: LocationPointer) {
+    if (!this.username || this.username.length < 2) {
+      window.alert("Please enter a valid username");
+      return;
+    }
+    this.login();
   }
 }

@@ -14,7 +14,8 @@
         [style.height]="locationPointer.height+'px'"
         [style.left] ="(locationPointer.left+bgPosX)%scaledImageWidth+'px'"
         [style.top] ="locationPointer.top+'px'"
-        class="img-location-pointer">
+        class="img-location-pointer"
+        (click)="onLocationClicked(locationPointer)">
       </div>
     </div>
   </div>
