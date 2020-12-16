@@ -7,5 +7,15 @@
       Y:{{posY}}
     </strong>
   </div>
+  <div *ngIf="location && location.pointers">
+    <div *ngFor="let locationPointer of location.pointers">
+      <div *ngIf="(locationPointer.left+bgPosX+locationPointer.width)%scaledImageWidth < getWindowWidth()"
+        [style.width]="locationPointer.width+'px'"
+        [style.height]="locationPointer.height+'px'"
+        [style.left] ="(locationPointer.left+bgPosX)%scaledImageWidth+'px'"
+        [style.top] ="locationPointer.top+'px'"
+        class="img-location-pointer">
+      </div>
+    </div>
+  </div>
 </div>
-
