@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../api-service.service';
+import { LocationPointer } from '../model/location-pointer';
 import * as UrlConstants from '../urlConstants.js';
 
 @Component({
-  selector: 'app-player-list',
-  templateUrl: './player-list.component.html',
-  styleUrls: ['./player-list.component.css']
+  selector: 'app-game-explore',
+  templateUrl: './game-explore.component.html',
+  styleUrls: ['./game-explore.component.css']
 })
-export class PlayerListComponent implements OnInit {
+export class GameExploreComponent implements OnInit {
 
+  img: string = `${UrlConstants.IMAGES_ROOT}/P1010119.JPG`;
   players: string[];
-  imageName: string;
 
   constructor(private apiService: ApiService, private router: Router) {
     this.players = [];
-    this.imageName = 'P1010118.JPG';
   }
 
   ngOnInit(): void {
@@ -35,5 +35,9 @@ export class PlayerListComponent implements OnInit {
 
   getPlayers(): string[] {
     return this.players;
+  }
+
+  onLocationClicked(locationPointer: LocationPointer) {
+    this.img = `${UrlConstants.IMAGES_ROOT}${locationPointer.filename}`;
   }
 }

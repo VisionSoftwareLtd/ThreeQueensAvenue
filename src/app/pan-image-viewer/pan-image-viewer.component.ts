@@ -10,13 +10,12 @@ import { LocationPointer } from '../model/location-pointer';
 })
 export class PanImageViewerComponent implements OnInit {
   private static SCROLL_DELAY = 10;
-  private static SCROLL_SPEED = 10;
+  private static SCROLL_SPEED = 12;
 
   @Input('img') imagen: string;
-  @Input() lensSize: number = 100;
+  @Input() lensSize: number;
   @Input() imgHeight: number;
   @Input() bgPosX: number = 0;
-  @Input() bgRepeats: boolean = true;
   @Output() locationClickEvent:EventEmitter<LocationPointer> = new EventEmitter<LocationPointer>();
   
   posX: number = 0; // Used for lens
@@ -30,16 +29,24 @@ export class PanImageViewerComponent implements OnInit {
     'background-size': '100px 100px'
   };
 
+  scalingRatio: number;
   scaledImageWidth: number;
   location: Location;
-  bgImagePosX: number; // Debug information only
+  bgImagePosX: number;
+  bgImagePosY: number;
+  bgRepeats: boolean = true;
 
   constructor(private locationService : LocationService) { }
 
   ngOnInit(): void {
     this.imgHeight = this.imgHeight ?? 400;
     this.location = this.locationService.getLocation(this.imagen.split("/").pop());
-    console.log(`Location filename: ${this.location.filename}`);
+    if (this.location === undefined) {
+      console.log(`ERROR: No entry in locations.json for ${this.imagen.split("/").pop()}`)
+      alert('Error!  Contact ThreeQueensAvenue support :)');
+      return;
+    }
+    this.bgRepeats = this.location.scrollingImage;
     this.setStyle();
   }
 
@@ -70,10 +77,17 @@ export class PanImageViewerComponent implements OnInit {
   }
 
   setBackgroundPosition() {
-    if (this.bgPosX < 0)
-      this.bgPosX += this.scaledImageWidth;
-    else if (this.bgPosX > this.scaledImageWidth)
-      this.bgPosX -= this.scaledImageWidth;
+    if (this.location.scrollingImage) {
+      if (this.bgPosX < 0)
+        this.bgPosX += this.scaledImageWidth;
+      else if (this.bgPosX > this.scaledImageWidth)
+        this.bgPosX -= this.scaledImageWidth;
+      this.bgPosX = Math.round(this.bgPosX);
+    } else {
+      // Don't use this.style['background-position'] = 'center';
+      // Instead, set bgPosX manually as the x/y pos of the cursor relies on this.bgPosX being set correctly
+      this.bgPosX = window.innerWidth / 2 - this.scaledImageWidth / 2;
+    }
     this.style['background-position'] = `${this.bgPosX}px 0px`;
   }
 
@@ -89,15 +103,15 @@ export class PanImageViewerComponent implements OnInit {
     this.setImageWidth();
     setTimeout(() => {
       this.setImageWidth();
-    }, 50);
+    }, 100);
   }
   
   setImageWidth() {
     var image = new Image();
     image.src = this.imagen;
-    const scalingRatio = this.imgHeight / image.height;
-    this.scaledImageWidth = image.width * scalingRatio;
-    this.style['background-size'] = `${this.scaledImageWidth}px ${image.height * scalingRatio}px`;
+    this.scalingRatio = this.imgHeight / image.height;
+    this.scaledImageWidth = image.width * this.scalingRatio;
+    this.style['background-size'] = `${this.scaledImageWidth}px ${image.height * this.scalingRatio}px`;
     this.setBackgroundPosition();
   }
 
@@ -117,23 +131,29 @@ export class PanImageViewerComponent implements OnInit {
     if (x < 0) { x = 0; }
     if (y > this.img.nativeElement.height - this.lens.nativeElement.offsetHeight) { y = this.img.nativeElement.height - this.lens.nativeElement.offsetHeight; }
     if (y < 0) { y = 0; }
-    if (pos.x < 100)
-      this.startScrolling(PanImageViewerComponent.SCROLL_SPEED);
-    else if (pos.x < 200)
-      this.startScrolling(PanImageViewerComponent.SCROLL_SPEED / 3);
-    else if (pos.x > window.innerWidth - 100)
-      this.startScrolling(-PanImageViewerComponent.SCROLL_SPEED);
-    else if (pos.x > window.innerWidth - 200)
-      this.startScrolling(-PanImageViewerComponent.SCROLL_SPEED / 3);
-    else
-      this.stopScrolling();
+    if (this.location.scrollingImage) {
+      if (pos.x < 100)
+        this.startScrolling(PanImageViewerComponent.SCROLL_SPEED);
+      else if (pos.x < 200)
+        this.startScrolling(PanImageViewerComponent.SCROLL_SPEED / 3);
+      else if (pos.x > window.innerWidth - 100)
+        this.startScrolling(-PanImageViewerComponent.SCROLL_SPEED);
+      else if (pos.x > window.innerWidth - 200)
+        this.startScrolling(-PanImageViewerComponent.SCROLL_SPEED / 3);
+      else
+        this.stopScrolling();
+    }
     /*set the position of the lens:*/
     this.posX = Math.round(x);
     this.posY = Math.round(y);
     // For debug purposes
-    this.bgImagePosX = Math.round(this.posX - this.bgPosX);
+    this.bgImagePosX = this.posX - this.bgPosX;
     if (this.bgImagePosX < 0)
-      this.bgImagePosX += Math.round(this.scaledImageWidth);
+      this.bgImagePosX += this.scaledImageWidth;
+    this.bgImagePosX /= this.scalingRatio;
+    this.bgImagePosY = this.posY / this.scalingRatio;
+    this.bgImagePosX = Math.round(this.bgImagePosX);
+    this.bgImagePosY = Math.round(this.bgImagePosY);
   }
 
   getCursorPos(e) {

@@ -1,19 +1,19 @@
 <div class="img-zoom-container">
   <div #img [style.height.px]="imgHeight?imgHeight:null" id="myimage" [ngStyle]="style"></div>
-  <div #lens [style.width]="lensSize+'px'" [style.height]="lensSize+'px'"  [style.left] ="posX+'px'" [style.top] ="posY+'px'" class="img-zoom-lens">
+  <div #lens [style.width]="(lensSize * scalingRatio)+'px'" [style.height]="(lensSize * scalingRatio)+'px'"  [style.left] ="posX+'px'" [style.top] ="posY+'px'" class="img-zoom-lens">
     <strong>
       bgPosX:{{bgPosX}}<br />
       X:{{bgImagePosX}}<br />
-      Y:{{posY}}
+      Y:{{bgImagePosY}}
     </strong>
   </div>
-  <div *ngIf="location && location.pointers">
-    <div *ngFor="let locationPointer of location.pointers">
-      <div *ngIf="(locationPointer.left+bgPosX+locationPointer.width)%scaledImageWidth < getWindowWidth()"
-        [style.width]="locationPointer.width+'px'"
-        [style.height]="locationPointer.height+'px'"
-        [style.left] ="(locationPointer.left+bgPosX)%scaledImageWidth+'px'"
-        [style.top] ="locationPointer.top+'px'"
+  <div *ngIf="location && location.locationPointers">
+    <div *ngFor="let locationPointer of location.locationPointers">
+      <div *ngIf="((locationPointer.left+locationPointer.width) * scalingRatio + bgPosX)%scaledImageWidth < getWindowWidth()"
+        [style.width]="(locationPointer.width * scalingRatio)+'px'"
+        [style.height]="(locationPointer.height * scalingRatio)+'px'"
+        [style.left] ="((locationPointer.left * scalingRatio)+bgPosX)%scaledImageWidth+'px'"
+        [style.top] ="(locationPointer.top * scalingRatio)+'px'"
         class="img-location-pointer"
         (click)="onLocationClicked(locationPointer)">
       </div>

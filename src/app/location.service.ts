@@ -18,20 +18,22 @@ export class LocationService {
     this.locations = [];
     const root = locationJson['default'];
     for (var key in root) {
-      const locationArray = root[key];
+      const locationObject = root[key];
+      const locationPointerArray = locationObject.locationPointers;
       const newLocation: Location = {
         filename: key,
-        pointers: []
+        scrollingImage: locationObject.scrollingImage,
+        locationPointers: []
       }
-      for (var location in locationArray) {
+      for (var location in locationPointerArray) {
         const locationPointer: LocationPointer = {
-          top: locationArray[location].top,
-          left: locationArray[location].left,
-          width: locationArray[location].width,
-          height: locationArray[location].height,
-          filename: locationArray[location].filename
+          top: locationPointerArray[location].top,
+          left: locationPointerArray[location].left,
+          width: locationPointerArray[location].width,
+          height: locationPointerArray[location].height,
+          filename: locationPointerArray[location].filename
         }
-        newLocation.pointers.push(locationPointer);
+        newLocation.locationPointers.push(locationPointer);
       }
       this.locations.push(newLocation);
     }

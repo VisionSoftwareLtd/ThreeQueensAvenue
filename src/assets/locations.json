@@ -1,11 +1,22 @@
 {
-  "P1010118.JPG" : [
-    {
-      "top" : 200,
-      "left" : 500,
-      "width" : 120,
-      "height" : 100,
-      "filename" : "P1010119.JPG"
-    }
-  ]
+  "P1010118.JPG" : {
+    "scrollingImage" : true,
+    "locationPointers" : [
+      {
+        "top" : 430,
+        "left" : 1061,
+        "width" : 250,
+        "height" : 200,
+        "filename" : "P1010119.JPG"
+      }
+    ]
+  },
+  "P1000962.JPG" : {
+    "scrollingImage" : true,
+    "locationPointers" : []
+  },
+  "P1010119.JPG" : {
+    "scrollingImage" : false,
+    "locationPointers" : []
+  }
 }

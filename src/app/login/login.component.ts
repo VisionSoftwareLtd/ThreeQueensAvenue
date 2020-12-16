@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiService } from '../api-service.service';
 import { LocationPointer } from '../model/location-pointer';
+import { environment } from '../../environments/environment';
 import * as UrlConstants from '../urlConstants.js';
 
 @Component({
@@ -11,9 +12,9 @@ import * as UrlConstants from '../urlConstants.js';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username = '';
+  username = environment.production ? '' : 'Dave';
   subscription: Subscription;
-  img = 'assets/images/P1010118.JPG';
+  img = `${UrlConstants.IMAGES_ROOT}/P1010118.JPG`;
 
   constructor(private apiService: ApiService, private router: Router) { }
 
