@@ -7,33 +7,28 @@ import { Component, ElementRef, HostListener, Input, OnInit, Renderer2, ViewChil
 })
 export class PanImageViewerComponent implements OnInit {
 
-  private static SCROLL_DELAY = 50;
+  private static SCROLL_DELAY = 10;
   private static SCROLL_SPEED = 10;
 
   @Input('img') imagen: string;
-  @Input() zoom=2;
-  @Input() lensSize=100;
-  @Input() imgWidth;
-  @Input() imgHeight;
-  @Input() divZoomed:ElementRef;
+  @Input() lensSize: number = 100;
+  @Input() imgHeight: number;
+  @Input() bgPosX: number = 0;
 
-  posX:number=0;
-  posY:number=0;
-  cx:number=1;
-  cy:number=1;
-  yet:boolean=false;
-  factorX:number;
-  factorY:number;
-  bgPosX:number = 0;
-  bgPosY:number = 0;
+  posX:number=0; // Used for lens
+  posY:number=0; // Used for lens
   scrollXVel: number = 0;
-  scrollHandler: number;
+  scrollHandler: NodeJS.Timeout;
   style = {
     'background-image' : '',
     'background-repeat': 'repeat',
     'background-position': '0px 0px',
     'background-size': '100px 100px'
   };
+
+  private imageWidth: number;
+  private scalingRatio: number;
+  bgImagePosX: number; // Debug information only
   
   constructor(private renderer: Renderer2) { }
 
@@ -47,7 +42,7 @@ export class PanImageViewerComponent implements OnInit {
   
   @HostListener('mousemove', ['$event'])
   mouseMove(event:any) {
-    const result = this.moveLens(event);
+    this.moveLens(event);
   }
 
   @HostListener('mouseleave', ['$event'])
@@ -63,10 +58,18 @@ export class PanImageViewerComponent implements OnInit {
 
     this.scrollXVel = xVelocity;
     var that = this;
-    setInterval(() => {
+    this.scrollHandler = setInterval(() => {
       that.bgPosX += that.scrollXVel;
-      that.style['background-position'] = `${that.bgPosX}px ${that.bgPosY}px`;
+      that.setBackgroundPosition();
     }, PanImageViewerComponent.SCROLL_DELAY);
+  }
+
+  setBackgroundPosition() {
+    if (this.bgPosX < 0)
+      this.bgPosX += this.imageWidth * this.scalingRatio;
+    else if (this.bgPosX > this.imageWidth * this.scalingRatio)
+      this.bgPosX -= this.imageWidth * this.scalingRatio;
+    this.style['background-position'] = `${this.bgPosX}px 0px`;
   }
 
   stopScrolling() {
@@ -77,35 +80,20 @@ export class PanImageViewerComponent implements OnInit {
   setStyle() {
     console.log("Setting style");
     this.style['background-image'] = `url(${this.imagen})`;
-    var image = new Image();
-    image.src = this.imagen;
-    const ratio = this.imgHeight / image.height;
-    this.style['background-size'] = `${image.width * ratio}px ${image.height * ratio}px`;
-  }
-
-  onLoad() {
-    // this.renderer.setStyle(this.divZoomed,'background-image',"url('" + this.imagen+ "')");
-    // this.renderer.setStyle(this.divZoomed,'background-size',(this.img.nativeElement.width * this.zoom) + "px " + (this.img.nativeElement.height * this.zoom) + "px")
-    // this.renderer.setStyle(this.divZoomed,'background-repeat', 'no-repeat')
-    // this.renderer.setStyle(this.divZoomed, 'transition', 'background-position .2s ease-out');
-    // this.factorX = this.img.nativeElement.width;
-    // this.factorY = this.img.nativeElement.height;
-
-    this.yet = true;
-    // setTimeout(() => {
-    //   this.factorX = this.imgWidth || this.imgHeight ? this.factorX / this.img.nativeElement.width : 1
-    //   this.factorY = this.imgWidth || this.imgHeight ? this.factorY / this.img.nativeElement.height : 1
-    //   // const dim = (this.divZoomed as any).getBoundingClientRect()
-    //   // this.cx = (dim.width - this.img.nativeElement.width * this.zoom * this.factorX) / (this.img.nativeElement.width - this.lens.nativeElement.offsetWidth);
-    //   // this.cy = (dim.height - this.img.nativeElement.height * this.zoom * this.factorY) / (this.img.nativeElement.height -
-    //   // this.lens.nativeElement.offsetHeight);
-    // });
+    setTimeout(() => {
+      var image = new Image();
+      image.src = this.imagen;
+      this.scalingRatio = this.imgHeight / image.height;
+      this.imageWidth = image.width;
+      this.style['background-size'] = `${image.width * this.scalingRatio}px ${image.height * this.scalingRatio}px`;
+      this.setBackgroundPosition();
+    }, 100);
   }
 
   moveLens(e) {
-    let pos
-    let x
-    let y;
+    let pos: { x: any; y: any; };
+    let x: number;
+    let y: number;
     /*prevent any other actions that may occur when moving over the image:*/
     e.preventDefault();
     /*get the cursor's x and y positions:*/
@@ -130,18 +118,17 @@ export class PanImageViewerComponent implements OnInit {
       this.stopScrolling();
     // this.renderer.setStyle(this.img.nativeElement, 'background-position', "50px 10px");
     /*set the position of the lens:*/
-    this.posX = x;
-    this.posY = y;
-    /*display what the lens "sees":*/
-
-    let result = (x * this.cx) + "px "+(y * this.cy) + "px"
-
-    return result;
+    this.posX = Math.round(x);
+    this.posY = Math.round(y);
+    // For debug purposes
+    this.bgImagePosX = Math.round(this.posX - this.bgPosX);
+    if (this.bgImagePosX < 0)
+      this.bgImagePosX += Math.round(this.imageWidth * this.scalingRatio);
   }
 
   getCursorPos(e) {
-    var a, x = 0, y = 0;
-    e = e || window.event;
+    let a, x = 0, y = 0;
+    // e = e || window.event;
     /* Get the x and y positions of the image: */
     a = this.img.nativeElement.getBoundingClientRect();
     /* Calculate the cursor's x and y coordinates, relative to the image: */

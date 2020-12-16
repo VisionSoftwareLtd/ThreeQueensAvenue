@@ -1,5 +1,11 @@
 <div class="img-zoom-container">
-  <div #img [style.height.px]="imgHeight?imgHeight:null" id="myimage" [ngStyle]="style" (load)="onLoad()"></div>
-  <div #lens [style.width]="lensSize+'px'" [style.height]="lensSize+'px'"  [style.left] ="posX+'px'" [style.top] ="posY+'px'" class="img-zoom-lens"></div>
+  <div #img [style.height.px]="imgHeight?imgHeight:null" id="myimage" [ngStyle]="style"></div>
+  <div #lens [style.width]="lensSize+'px'" [style.height]="lensSize+'px'"  [style.left] ="posX+'px'" [style.top] ="posY+'px'" class="img-zoom-lens">
+    <strong>
+      bgPosX:{{bgPosX}}<br />
+      X:{{bgImagePosX}}<br />
+      Y:{{posY}}
+    </strong>
+  </div>
 </div>
 
