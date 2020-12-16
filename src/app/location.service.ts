@@ -31,7 +31,8 @@ export class LocationService {
           left: locationPointerArray[location].left,
           width: locationPointerArray[location].width,
           height: locationPointerArray[location].height,
-          filename: locationPointerArray[location].filename
+          filename: locationPointerArray[location].filename,
+          newBgPosX: locationPointerArray[location].newBgPosX ?? 0
         }
         newLocation.locationPointers.push(locationPointer);
       }

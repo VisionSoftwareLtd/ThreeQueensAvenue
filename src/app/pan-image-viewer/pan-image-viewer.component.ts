@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, Input, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit, Output, ViewChild, EventEmitter, SimpleChanges } from '@angular/core';
 import { Location } from '../model/location';
 import { LocationService } from '../location.service';
 import { LocationPointer } from '../model/location-pointer';
@@ -13,8 +13,8 @@ export class PanImageViewerComponent implements OnInit {
   private static SCROLL_SPEED = 12;
 
   @Input('img') imagen: string;
-  @Input() lensSize: number;
-  @Input() imgHeight: number;
+  @Input() lensSize: number = 100;
+  @Input() imgHeight: number = 400;
   @Input() bgPosX: number = 0;
   @Output() locationClickEvent:EventEmitter<LocationPointer> = new EventEmitter<LocationPointer>();
   
@@ -29,17 +29,20 @@ export class PanImageViewerComponent implements OnInit {
     'background-size': '100px 100px'
   };
 
-  scalingRatio: number;
-  scaledImageWidth: number;
+  scalingRatio: number = 1;
+  scaledImageWidth: number = 0;
   location: Location;
-  bgImagePosX: number;
-  bgImagePosY: number;
+  bgImagePosX: number = 0;
+  bgImagePosY: number = 0;
   bgRepeats: boolean = true;
 
   constructor(private locationService : LocationService) { }
 
   ngOnInit(): void {
-    this.imgHeight = this.imgHeight ?? 400;
+    this.loadImage();
+  }
+
+  loadImage() {
     this.location = this.locationService.getLocation(this.imagen.split("/").pop());
     if (this.location === undefined) {
       console.log(`ERROR: No entry in locations.json for ${this.imagen.split("/").pop()}`)
@@ -48,6 +51,30 @@ export class PanImageViewerComponent implements OnInit {
     }
     this.bgRepeats = this.location.scrollingImage;
     this.setStyle();
+  }
+
+  setStyle() {
+    this.style['background-image'] = `url(${this.imagen})`;
+    this.style['background-repeat'] = this.bgRepeats ? 'repeat' : 'no-repeat';
+    this.setImageWidth();
+  }
+
+  setImageWidth() {
+    var image = new Image();
+    var that = this;
+    image.onload = function() {
+      that.scalingRatio = that.imgHeight / image.height;
+      that.scaledImageWidth = image.width * that.scalingRatio;
+      that.style['background-size'] = `${that.scaledImageWidth}px ${image.height * that.scalingRatio}px`;
+      that.setBackgroundPosition();
+    };
+    image.src = this.imagen;
+  }
+
+  updateImage(filepath: string, newBgPosX = 0) {
+    this.imagen = filepath;
+    this.bgPosX = newBgPosX;
+    this.loadImage();
   }
 
   @ViewChild('img', { static: false, read: ElementRef }) img
@@ -96,25 +123,6 @@ export class PanImageViewerComponent implements OnInit {
     clearInterval(this.scrollHandler);
   }
 
-  setStyle() {
-    console.log("Setting style");
-    this.style['background-image'] = `url(${this.imagen})`;
-    this.style['background-repeat'] = this.bgRepeats ? 'repeat' : 'no-repeat';
-    this.setImageWidth();
-    setTimeout(() => {
-      this.setImageWidth();
-    }, 100);
-  }
-  
-  setImageWidth() {
-    var image = new Image();
-    image.src = this.imagen;
-    this.scalingRatio = this.imgHeight / image.height;
-    this.scaledImageWidth = image.width * this.scalingRatio;
-    this.style['background-size'] = `${this.scaledImageWidth}px ${image.height * this.scalingRatio}px`;
-    this.setBackgroundPosition();
-  }
-
   moveLens(e) {
     let pos: { x: any; y: any; };
     let x: number;
@@ -146,7 +154,7 @@ export class PanImageViewerComponent implements OnInit {
     /*set the position of the lens:*/
     this.posX = Math.round(x);
     this.posY = Math.round(y);
-    // For debug purposes
+
     this.bgImagePosX = this.posX - this.bgPosX;
     if (this.bgImagePosX < 0)
       this.bgImagePosX += this.scaledImageWidth;

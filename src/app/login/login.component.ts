@@ -12,9 +12,9 @@ import * as UrlConstants from '../urlConstants.js';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username = environment.production ? '' : 'Dave';
+  username = environment.production ? '' : '';
   subscription: Subscription;
-  img = `${UrlConstants.IMAGES_ROOT}/P1010118.JPG`;
+  img = `${UrlConstants.IMAGES_ROOT}/PanRoad.jpg`;
 
   constructor(private apiService: ApiService, private router: Router) { }
 

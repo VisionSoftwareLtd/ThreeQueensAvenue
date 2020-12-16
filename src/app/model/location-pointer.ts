@@ -4,4 +4,5 @@ export interface LocationPointer {
   width: number;
   height: number;
   filename: string;
+  newBgPosX: number;
 }

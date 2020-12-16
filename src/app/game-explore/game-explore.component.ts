@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../api-service.service';
 import { LocationPointer } from '../model/location-pointer';
@@ -11,7 +11,7 @@ import * as UrlConstants from '../urlConstants.js';
 })
 export class GameExploreComponent implements OnInit {
 
-  img: string = `${UrlConstants.IMAGES_ROOT}/P1010119.JPG`;
+  img: string = `${UrlConstants.IMAGES_ROOT}/FrontDoor.jpg`;
   players: string[];
 
   constructor(private apiService: ApiService, private router: Router) {
@@ -37,7 +37,8 @@ export class GameExploreComponent implements OnInit {
     return this.players;
   }
 
+  @ViewChild('panImageViewer') panImageViewer;
   onLocationClicked(locationPointer: LocationPointer) {
-    this.img = `${UrlConstants.IMAGES_ROOT}${locationPointer.filename}`;
+    this.panImageViewer.updateImage(`${UrlConstants.IMAGES_ROOT}/${locationPointer.filename}`, locationPointer.newBgPosX);
   }
 }
