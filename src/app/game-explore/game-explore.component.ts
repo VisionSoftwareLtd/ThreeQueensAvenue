@@ -41,4 +41,8 @@ export class GameExploreComponent implements OnInit {
   onLocationClicked(locationPointer: LocationPointer) {
     this.panImageViewer.updateImage(`${UrlConstants.IMAGES_ROOT}/${locationPointer.filename}`, locationPointer.newBgPosX);
   }
+
+  getWindowHeight() {
+    return window.innerHeight;
+  }
 }

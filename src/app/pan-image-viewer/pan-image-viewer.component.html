@@ -1,11 +1,7 @@
 <div class="img-zoom-container" (click)="onClickNoDiv()">
   <div #img [style.height.px]="imgHeight?imgHeight:null" id="myimage" [ngStyle]="style"></div>
   <div #lens [style.width]="(lensSize * scalingRatio)+'px'" [style.height]="(lensSize * scalingRatio)+'px'"  [style.left] ="posX+bgXOffsetForCentredImage+'px'" [style.top] ="posY+'px'" class="img-zoom-lens">
-    <strong>
-      bgPosX:{{bgPosX}}<br />
-      top:{{bgImagePosY}}<br />
-      left:{{bgImagePosX}}
-    </strong>
+
   </div>
   <div *ngIf="location && location.locationPointers">
     <div *ngFor="let locationPointer of location.locationPointers">

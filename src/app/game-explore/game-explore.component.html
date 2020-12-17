@@ -1,6 +1,6 @@
 <div>
 <div>
-  <app-pan-image-viewer #panImageViewer [img]="img" [imgHeight]="600" (locationClickEvent)="onLocationClicked($event)"></app-pan-image-viewer>
+  <app-pan-image-viewer #panImageViewer [img]="img" [imgHeight]="getWindowHeight()" (locationClickEvent)="onLocationClicked($event)"></app-pan-image-viewer>
 </div>
 <div class="fixed-position">
   <ul class="list-group">
