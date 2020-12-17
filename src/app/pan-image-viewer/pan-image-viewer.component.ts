@@ -2,6 +2,7 @@ import { Component, ElementRef, HostListener, Input, OnInit, Output, ViewChild, 
 import { Location } from '../model/location';
 import { LocationService } from '../location.service';
 import { LocationPointer } from '../model/location-pointer';
+import { ClipboardService } from 'ngx-clipboard';
 
 @Component({
   selector: 'app-pan-image-viewer',
@@ -37,7 +38,7 @@ export class PanImageViewerComponent implements OnInit {
   bgRepeats: boolean = true;
   bgXOffsetForCentredImage: number = 0;
 
-  constructor(private locationService : LocationService) { }
+  constructor(private locationService: LocationService, private clipboardService: ClipboardService) { }
 
   ngOnInit(): void {
     this.loadImage();
@@ -144,8 +145,10 @@ export class PanImageViewerComponent implements OnInit {
     /*get the cursor's x and y positions:*/
     pos = this.getCursorPos(e);
     /*calculate the position of the lens:*/
-    x = pos.x - (this.lens.nativeElement.offsetWidth / 2);
-    y = pos.y - (this.lens.nativeElement.offsetHeight / 2);
+    // x = pos.x - (this.lens.nativeElement.offsetWidth / 2);
+    // y = pos.y - (this.lens.nativeElement.offsetHeight / 2);
+    x = pos.x;
+    y = pos.y;
     /*prevent the lens from being positioned outside the image:*/
     if (x > this.img.nativeElement.width - this.lens.nativeElement.offsetWidth) { x = this.img.nativeElement.width - this.lens.nativeElement.offsetWidth; }
     if (x < 0) { x = 0; }
@@ -201,6 +204,7 @@ export class PanImageViewerComponent implements OnInit {
       const otherLocation = this.locationService.getLocation(locationPointer.filename);
       if (otherLocation.isPointOfInterest) {
         otherLocation.locationPointers[0].newBgPosX = this.bgPosX;
+        otherLocation.locationPointers[0].filename = this.location.filename;
       }
       this.locationClickEvent.emit(locationPointer);
     }
@@ -209,5 +213,24 @@ export class PanImageViewerComponent implements OnInit {
   isPointOfInterest(locationPointer: LocationPointer) {
     const otherLocation = this.locationService.getLocation(locationPointer.filename);
     return otherLocation.isPointOfInterest;
+  }
+
+  private copyTop: number;
+  private copyLeft: number;
+  private copyWidth: number;
+  private copyHeight: number;
+  private isCopying: boolean = false;
+
+  onClickNoDiv() {
+    if (!this.isCopying) {
+      this.copyTop = this.bgImagePosY;
+      this.copyLeft = this.bgImagePosX;
+    } else {
+      this.copyWidth = this.bgImagePosX - this.copyLeft;
+      this.copyHeight = this.bgImagePosY - this.copyTop;
+      this.clipboardService.copy(`"top": ${this.copyTop},\n"left": ${this.copyLeft},\n"width": ${this.copyWidth},\n"height": ${this.copyHeight},`);
+      console.log('Copied');
+    }
+    this.isCopying = !this.isCopying;
   }
 }

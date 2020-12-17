@@ -1,525 +1,1159 @@
 {
-  "PanRoad.jpg" : {
-    "scrollingImage" : true,
-    "locationPointers" : [
+  "PanRoad.jpg": {
+    "scrollingImage": true,
+    "locationPointers": [
       {
-        "top" : 430,
-        "left" : 1061,
-        "width" : 250,
-        "height" : 200,
-        "filename" : "SingleFrontDoor.jpg"
+        "top": 430,
+        "left": 1061,
+        "width": 250,
+        "height": 200,
+        "filename": "SingleFrontDoor.jpg"
       }
     ]
   },
-  "PanHall.jpg" : {
-    "scrollingImage" : true,
-    "locationPointers" : [
+  "PanHall.jpg": {
+    "scrollingImage": true,
+    "locationPointers": [
       {
-        "top" : 80,
-        "left" : 390,
-        "width" : 310,
-        "height" : 750,
-        "filename" : "PanCorridor.jpg",
-        "newBgPosX" : 1580
+        "top": 118,
+        "left": 468,
+        "width": 213,
+        "height": 727,
+        "filename": "PanCorridor.jpg",
+        "newBgPosX": 1580
       },
       {
-        "top" : 30,
-        "left" : 0,
-        "width" : 300,
-        "height" : 800,
-        "filename" : "PanLounge.jpg",
-        "newBgPosX" : 1150
+        "top": 30,
+        "left": 0,
+        "width": 300,
+        "height": 800,
+        "filename": "PanLounge.jpg",
+        "newBgPosX": 1150
       },
       {
-        "top" : 80,
-        "left" : 1430,
-        "width" : 270,
-        "height" : 210,
-        "filename" : "PointHallPainting1.jpg"
-      }
-    ]
-  },
-  "SingleFrontDoor.jpg" : {
-    "scrollingImage" : false,
-    "locationPointers" : [
-      {
-        "top" : 230,
-        "left" : 540,
-        "width" : 250,
-        "height" : 500,
-        "filename" : "PanHall.jpg",
-        "newBgPosX" : 4217
-      }
-    ]
-  },
-  "PanCorridor.jpg" : {
-    "scrollingImage" : true,
-    "locationPointers" : [
-      {
-        "top" : 50,
-        "left" : 1600,
-        "width" : 600,
-        "height" : 750,
-        "filename" : "PanHall.jpg",
-        "newBgPosX" : 2030
+        "top": 80,
+        "left": 1430,
+        "width": 270,
+        "height": 210,
+        "filename": "PointHallPainting1.jpg"
       },
       {
-        "top" : 50,
-        "left" : 5100,
-        "width" : 600,
-        "height" : 750,
-        "filename" : "PanKitchen.jpg"
+        "top": 80,
+        "left": 5120,
+        "width": 250,
+        "height": 330,
+        "filename": "PointHallPainting2.jpg"
       },
       {
-        "top" : 50,
-        "left" : 3400,
-        "width" : 500,
-        "height" : 750,
-        "filename" : "PanPlayroom.jpg",
-        "newBgPosX" : 2400
+        "top": 107,
+        "left": 3029,
+        "width": 298,
+        "height": 274,
+        "filename": "PointHallPainting3.jpg"
       },
       {
-        "top" : 240,
-        "left" : 0,
-        "width" : 550,
-        "height" : 450,
-        "filename" : "SingleStairsUpToLanding.jpg"
-      }
-    ]
-  },
-  "PanLounge.jpg" : {
-    "scrollingImage" : true,
-    "locationPointers" : [
-      {
-        "top" : 80,
-        "left" : 2350,
-        "width" : 300,
-        "height" : 730,
-        "filename" : "PanHall.jpg",
-        "newBgPosX" : 3900
-      }
-    ]
-  },
-  "PanKitchen.jpg" : {
-    "scrollingImage" : true,
-    "locationPointers" : [
-      {
-        "top" : 30,
-        "left" : 3450,
-        "width" : 250,
-        "height" : 730,
-        "filename" : "PanCorridor.jpg",
-        "newBgPosX" : 4000
+        "top": 30,
+        "left": 4030,
+        "width": 350,
+        "height": 250,
+        "filename": "PointFrontDoorWindow.jpg"
       },
       {
-        "top" : 150,
-        "left" : 150,
-        "width" : 180,
-        "height" : 500,
-        "filename" : "PanGarden.jpg",
-        "newBgPosX" : 530
+        "top": 50,
+        "left": 2070,
+        "width": 90,
+        "height": 300,
+        "filename": "PointBarometer.jpg"
       },
       {
-        "top" : 80,
-        "left" : 1380,
-        "width" : 190,
-        "height" : 550,
-        "filename" : "PanGarage.jpg",
-        "newBgPosX" : 2810
-      }
-    ]
-  },
-  "PanPlayroom.jpg" : {
-    "scrollingImage" : true,
-    "locationPointers" : [
-      {
-        "top" : 160,
-        "left" : 4630,
-        "width" : 130,
-        "height" : 600,
-        "filename" : "PanCorridor.jpg",
-        "newBgPosX" : 270
+        "top": 20,
+        "left": 5650,
+        "width": 350,
+        "height": 830,
+        "filename": "PointGrandfatherClock.jpg"
       },
       {
-        "top" : 90,
-        "left" : 2720,
-        "width" : 220,
-        "height" : 620,
-        "filename" : "PanSunroom.jpg",
-        "newBgPosX" : 2250
-      }
-    ]
-  },
-  "PanGarden.jpg" : {
-    "scrollingImage" : true,
-    "locationPointers" : [
-      {
-        "top" : 220,
-        "left" : 3270,
-        "width" : 130,
-        "height" : 220,
-        "filename" : "PanKitchen.jpg",
-        "newBgPosX" : 2150
+        "top": 200,
+        "left": 6070,
+        "width": 250,
+        "height": 200,
+        "filename": "PointNeicesNephews.jpg"
       },
       {
-        "top" : 140,
-        "left" : 6500,
-        "width" : 300,
-        "height" : 320,
-        "filename" : "PanGarden2.jpg",
-        "newBgPosX" : 3670
+        "top": 569,
+        "left": 3042,
+        "width": 222,
+        "height": 204,
+        "filename": "PointCatsSnooker.jpg"
       },
       {
-        "top" : 200,
-        "left" : 3450,
-        "width" : 150,
-        "height" : 230,
-        "filename" : "PanSunroom.jpg",
-        "newBgPosX" : 120
+        "top": 618,
+        "left": 1271,
+        "width": 524,
+        "height": 232,
+        "filename": "PointHallPiano.jpg"
       },
       {
-        "top" : 220,
-        "left" : 2790,
-        "width" : 80,
-        "height" : 280,
-        "filename" : "PanGarage.jpg",
-        "newBgPosX" : 120
+        "top": 197,
+        "left": 409,
+        "width": 48,
+        "height": 134,
+        "filename": "PointRandomPortrait.jpg"
       },
       {
-        "top" : 0,
-        "left" : 3200,
-        "width" : 600,
-        "height" : 50,
-        "filename" : "PanGardenHigh.jpg",
-        "newBgPosX" : 3670
-      }
-    ]
-  },
-  "PanGarden2.jpg" : {
-    "scrollingImage" : true,
-    "locationPointers" : [
-      {
-        "top" : 280,
-        "left" : 6350,
-        "width" : 350,
-        "height" : 320,
-        "filename" : "PanGarden.jpg",
-        "newBgPosX" : 2840
-      }
-    ]
-  },
-  "PanSunroom.jpg" : {
-    "scrollingImage" : true,
-    "locationPointers" : [
-      {
-        "top" : 10,
-        "left" : 0,
-        "width" : 460,
-        "height" : 820,
-        "filename" : "PanPlayroom.jpg",
-        "newBgPosX" : 220
+        "top": 348,
+        "left": 411,
+        "width": 46,
+        "height": 124,
+        "filename": "PointHappyBirthdayMum.jpg"
       },
       {
-        "top" : 30,
-        "left" : 3620,
-        "width" : 340,
-        "height" : 800,
-        "filename" : "PanGarden.jpg",
-        "newBgPosX" : 600
+        "top": 639,
+        "left": 2266,
+        "width": 553,
+        "height": 208,
+        "filename": "PointHallWindow.jpg"
       }
     ]
   },
-  "SingleStairsUpToLanding.jpg" : {
-    "scrollingImage" : false,
-    "locationPointers" : [
+  "SingleFrontDoor.jpg": {
+    "scrollingImage": false,
+    "locationPointers": [
       {
-        "top" : 300,
-        "left" : 150,
-        "width" : 700,
-        "height" : 800,
-        "filename" : "PanLandingAtStairs.jpg",
-        "newBgPosX" : 2010
+        "top": 230,
+        "left": 540,
+        "width": 250,
+        "height": 500,
+        "filename": "PanHall.jpg",
+        "newBgPosX": 4217
       }
     ]
   },
-  "SingleStairsDownToCorridor.jpg" : {
-    "scrollingImage" : false,
-    "locationPointers" : [
+  "PanCorridor.jpg": {
+    "scrollingImage": true,
+    "locationPointers": [
       {
-        "top" : 300,
-        "left" : 150,
-        "width" : 700,
-        "height" : 800,
-        "filename" : "PanCorridor.jpg",
-        "newBgPosX" : 2760
-      }
-    ]
-  },
-  "PanLandingAtStairs.jpg" : {
-    "scrollingImage" : true,
-    "locationPointers" : [
-      {
-        "top" : 500,
-        "left" : 6080,
-        "width" : 500,
-        "height" : 320,
-        "filename" : "SingleStairsDownToCorridor.jpg",
-        "newBgPosX" : 0
+        "top": 50,
+        "left": 1600,
+        "width": 600,
+        "height": 750,
+        "filename": "PanHall.jpg",
+        "newBgPosX": 2030
       },
       {
-        "top" : 10,
-        "left" : 1000,
-        "width" : 400,
-        "height" : 820,
-        "filename" : "PanLandingAtToilet.jpg",
-        "newBgPosX" : 3340
+        "top": 50,
+        "left": 5400,
+        "width": 300,
+        "height": 750,
+        "filename": "PanKitchen.jpg"
       },
       {
-        "top" : 10,
-        "left" : 2400,
-        "width" : 500,
-        "height" : 820,
-        "filename" : "PanMiddleBedroom.jpg",
-        "newBgPosX" : 1330
+        "top": 50,
+        "left": 3400,
+        "width": 500,
+        "height": 750,
+        "filename": "PanPlayroom.jpg",
+        "newBgPosX": 2400
       },
       {
-        "top" : 10,
-        "left" : 4990,
-        "width" : 100,
-        "height" : 820,
-        "filename" : "PanBathroom.jpg",
-        "newBgPosX" : 1300
+        "top": 240,
+        "left": 0,
+        "width": 550,
+        "height": 450,
+        "filename": "SingleStairsUpToLanding.jpg"
       },
       {
-        "top" : 50,
-        "left" : 4680,
-        "width" : 250,
-        "height" : 700,
-        "filename" : "PanMumsBedroom.jpg",
-        "newBgPosX" : 2280
+        "top": 200,
+        "left": 5220,
+        "width": 100,
+        "height": 150,
+        "filename": "PointCatKeys.jpg"
       },
       {
-        "top" : 150,
-        "left" : 0,
-        "width" : 230,
-        "height" : 680,
-        "filename" : "SingleStairsToWindow.jpg"
-      }
-    ]
-  },
-  "PanLandingAtToilet.jpg" : {
-    "scrollingImage" : true,
-    "locationPointers" : [
-      {
-        "top" : 10,
-        "left" : 5950,
-        "width" : 350,
-        "height" : 820,
-        "filename" : "PanLandingAtStairs.jpg",
-        "newBgPosX" : 1970
+        "top": 37,
+        "left": 2620,
+        "width": 270,
+        "height": 498,
+        "filename": "PointRandomPortrait.jpg"
       },
       {
-        "top" : 10,
-        "left" : 4400,
-        "width" : 400,
-        "height" : 820,
-        "filename" : "PanDadsBedroom.jpg",
-        "newBgPosX" : 2300
+        "top": 579,
+        "left": 2610,
+        "width": 280,
+        "height": 273,
+        "filename": "PointHappyBirthdayMum.jpg"
       },
       {
-        "top" : 10,
-        "left" : 2830,
-        "width" : 500,
-        "height" : 820,
-        "filename" : "PanFrontBedroom.jpg",
-        "newBgPosX" : 2700
-      }
-    ]
-  },
-  "PanMiddleBedroom.jpg" : {
-    "scrollingImage" : true,
-    "locationPointers" : [
-      {
-        "top" : 100,
-        "left" : 1130,
-        "width" : 250,
-        "height" : 720,
-        "filename" : "PanLandingAtStairs.jpg",
-        "newBgPosX" : 910
-      }
-    ]
-  },
-  "PanDadsBedroom.jpg" : {
-    "scrollingImage" : true,
-    "locationPointers" : [
-      {
-        "top" : 100,
-        "left" : 850,
-        "width" : 250,
-        "height" : 750,
-        "filename" : "PanLandingAtToilet.jpg",
-        "newBgPosX" : 4780
-      }
-    ]
-  },
-  "PanGarage.jpg" : {
-    "scrollingImage" : true,
-    "locationPointers" : [
-      {
-        "top" : 220,
-        "left" : 460,
-        "width" : 370,
-        "height" : 620,
-        "filename" : "PanKitchen.jpg",
-        "newBgPosX" : 1270
+        "top": 9,
+        "left": 4682,
+        "width": 251,
+        "height": 450,
+        "filename": "PointDownstairsMirror.jpg"
       },
       {
-        "top" : 20,
-        "left" : 3800,
-        "width" : 350,
-        "height" : 820,
-        "filename" : "PanGarden.jpg",
-        "newBgPosX" : 1530
+        "top": 625,
+        "left": 4700,
+        "width": 69,
+        "height": 160,
+        "filename": "PointDoubleLightswitch.jpg"
       }
     ]
   },
-  "PanFrontBedroom.jpg" : {
-    "scrollingImage" : true,
-    "locationPointers" : [
+  "PanLounge.jpg": {
+    "scrollingImage": true,
+    "locationPointers": [
       {
-        "top" : 10,
-        "left" : 50,
-        "width" : 500,
-        "height" : 820,
-        "filename" : "PanLandingAtToilet.jpg",
-        "newBgPosX" : 1400
-      }
-    ]
-  },
-  "PanBathroom.jpg" : {
-    "scrollingImage" : true,
-    "locationPointers" : [
-      {
-        "top" : 10,
-        "left" : 5650,
-        "width" : 200,
-        "height" : 820,
-        "filename" : "PanLandingAtStairs.jpg",
-        "newBgPosX" : 4530
-      }
-    ]
-  },
-  "PanMumsBedroom.jpg" : {
-    "scrollingImage" : true,
-    "locationPointers" : [
-      {
-        "top" : 100,
-        "left" : 6760,
-        "width" : 150,
-        "height" : 730,
-        "filename" : "PanLandingAtStairs.jpg",
-        "newBgPosX" : 4530
-      }
-    ]
-  },
-  "SingleStairsToWindow.jpg" : {
-    "scrollingImage" : false,
-    "locationPointers" : [
-      {
-        "top" : 50,
-        "left" : 50,
-        "width" : 150,
-        "height" : 800,
-        "filename" : "SingleDoorToTopRoom.jpg"
-      }
-    ]
-  },
-  "SingleDoorToTopRoom.jpg" : {
-    "scrollingImage" : false,
-    "locationPointers" : [
-      {
-        "top" : 30,
-        "left" : 260,
-        "width" : 600,
-        "height" : 1200,
-        "filename" : "PanTopBedroom.jpg",
-        "newBgPosX" : 0
-      }
-    ]
-  },
-  "PanTopBedroom.jpg" : {
-    "scrollingImage" : true,
-    "locationPointers" : [
-      {
-        "top" : 200,
-        "left" : 3440,
-        "width" : 300,
-        "height" : 640,
-        "filename" : "SingleStairsDownToLanding.jpg"
+        "top": 80,
+        "left": 2350,
+        "width": 300,
+        "height": 730,
+        "filename": "PanHall.jpg",
+        "newBgPosX": 3900
       },
       {
-        "top" : 160,
-        "left" : 5000,
-        "width" : 320,
-        "height" : 640,
-        "filename" : "PanBoxRoom.jpg",
-        "newBgPosX" : 2820
-      }
-    ]
-  },
-  "SingleStairsDownToLanding.jpg" : {
-    "scrollingImage" : false,
-    "locationPointers" : [
-      {
-        "top" : 930,
-        "left" : 300,
-        "width" : 600,
-        "height" : 300,
-        "filename" : "PanLandingAtStairs.jpg",
-        "newBgPosX" : 3670
+        "top": 800,
+        "left": 120,
+        "width": 500,
+        "height": 50,
+        "filename": "SingleLoungeChest.jpg"
       },
       {
-        "top" : 330,
-        "left" : 420,
-        "width" : 220,
-        "height" : 580,
-        "filename" : "PanMiddleBedroom.jpg",
-        "newBgPosX" : 1330
+        "top": 30,
+        "left": 2860,
+        "width": 260,
+        "height": 220,
+        "filename": "PointLoungePainting1.jpg"
+      },
+      {
+        "top": 60,
+        "left": 3840,
+        "width": 170,
+        "height": 180,
+        "filename": "PointLoungePainting2.jpg"
+      },
+      {
+        "top": 150,
+        "left": 80,
+        "width": 300,
+        "height": 340,
+        "filename": "PointLoungePainting3.jpg"
+      },
+      {
+        "top": 250,
+        "left": 450,
+        "width": 280,
+        "height": 240,
+        "filename": "PointLoungePainting4.jpg"
+      },
+      {
+        "top": 180,
+        "left": 870,
+        "width": 160,
+        "height": 160,
+        "filename": "PointLoungePainting5.jpg"
+      },
+      {
+        "top": 160,
+        "left": 1620,
+        "width": 270,
+        "height": 200,
+        "filename": "PointLoungePainting6.jpg"
+      },
+      {
+        "top": 141,
+        "left": 2034,
+        "width": 229,
+        "height": 190,        
+        "filename": "PointLoungePainting7.jpg"
+      },
+      {
+        "top": 479,
+        "left": 3986,
+        "width": 431,
+        "height": 367,
+        "filename": "PointLoungeChair1.jpg"
+      },
+      {
+        "top": 425,
+        "left": 4480,
+        "width": 677,
+        "height": 303,
+        "filename": "PointLoungeChair2.jpg"
+      },
+      {
+        "top": 328,
+        "left": 5735,
+        "width": 140,
+        "height": 205,
+        "filename": "PointLoungeTable.jpg"
+      },
+      {
+        "top": 88,
+        "left": 4525,
+        "width": 525,
+        "height": 317,
+        "filename": "PointLoungeWindow.jpg"
       }
     ]
   },
-  "PanBoxRoom.jpg" : {
-    "scrollingImage" : true,
-    "locationPointers" : [
+  "PanKitchen.jpg": {
+    "scrollingImage": true,
+    "locationPointers": [
       {
-        "top" : 50,
-        "left" : 0,
-        "width" : 200,
-        "height" : 800,
-        "filename" : "PanTopBedroom.jpg",
-        "newBgPosX" : 4340
+        "top": 30,
+        "left": 3450,
+        "width": 250,
+        "height": 730,
+        "filename": "PanCorridor.jpg",
+        "newBgPosX": 4000
+      },
+      {
+        "top": 150,
+        "left": 150,
+        "width": 180,
+        "height": 500,
+        "filename": "PanGarden.jpg",
+        "newBgPosX": 530
+      },
+      {
+        "top": 80,
+        "left": 1380,
+        "width": 190,
+        "height": 550,
+        "filename": "PanGarage.jpg",
+        "newBgPosX": 2810
+      },
+      {
+        "top": 250,
+        "left": 4050,
+        "width": 50,
+        "height": 100,
+        "filename": "PointCatKeys.jpg"
+      },
+      {
+        "top": 147,
+        "left": 2021,
+        "width": 190,
+        "height": 167,
+        "filename": "PointOldMap.jpg"
+      },
+      {
+        "top": 1,
+        "left": 2060,
+        "width": 125,
+        "height": 46,
+        "filename": "PointClock.jpg"
+      },
+      {
+        "top": 462,
+        "left": 4539,
+        "width": 174,
+        "height": 130,
+        "filename": "PointFruitBowl.jpg"
+      },
+      {
+        "top": 360,
+        "left": 4793,
+        "width": 200,
+        "height": 209,
+        "filename": "PointMicrowave.jpg"
+      },
+      {
+        "top": 7,
+        "left": 4525,
+        "width": 174,
+        "height": 216,
+        "filename": "PointFamilyPhoto.jpg"
+      },
+      {
+        "top": 63,
+        "left": 3881,
+        "width": 160,
+        "height": 120,
+        "filename": "PointHomeWithoutCat.jpg"
+      },
+      {
+        "top": 140,
+        "left": 4105,
+        "width": 296,
+        "height": 232,
+        "filename": "PointKitchenPictures.jpg"
+      },
+      {
+        "top": 528,
+        "left": 332,
+        "width": 160,
+        "height": 60,
+        "filename": "PointCutleryDrawer.jpg"
+      },
+      {
+        "top": 385,
+        "left": 729,
+        "width": 167,
+        "height": 97,
+        "filename": "PointJuicesCorner.jpg"
+      },
+      {
+        "top": 263,
+        "left": 1104,
+        "width": 162,
+        "height": 132,
+        "filename": "PointSpreads.jpg"
+      },
+      {
+        "top": 167,
+        "left": 1004,
+        "width": 75,
+        "height": 163,
+        "filename": "PointFadedCatPhotos.jpg"
       }
     ]
   },
-  "PanGardenHigh.jpg" : {
-    "scrollingImage" : true,
-    "locationPointers" : [
+  "PanPlayroom.jpg": {
+    "scrollingImage": true,
+    "locationPointers": [
       {
-        "top" : 800,
-        "left" : 1450,
-        "width" : 600,
-        "height" : 50,
-        "filename" : "PanGarden.jpg",
-        "newBgPosX" : 3100
-     }
+        "top": 160,
+        "left": 4630,
+        "width": 130,
+        "height": 600,
+        "filename": "PanCorridor.jpg",
+        "newBgPosX": 270
+      },
+      {
+        "top": 90,
+        "left": 2720,
+        "width": 220,
+        "height": 620,
+        "filename": "PanSunroom.jpg",
+        "newBgPosX": 2250
+      },
+      {
+        "top": 379,
+        "left": 3293,
+        "width": 502,
+        "height": 155,
+        "filename": "PointPianoPhotos.jpg"
+      },
+      {
+        "top": 391,
+        "left": 1908,
+        "width": 295,
+        "height": 369,
+        "filename": "PointPlayroomBookcase.jpg"
+      },
+      {
+        "top": 205,
+        "left": 1101,
+        "width": 53,
+        "height": 60,
+        "filename": "PointPlayroomCalendar.jpg"
+      },
+      {
+        "top": 267,
+        "left": 2106,
+        "width": 101,
+        "height": 90,
+        "filename": "PointPlayroomClock.jpg"
+      },
+      {
+        "top": 268,
+        "left": 213,
+        "width": 119,
+        "height": 96,
+        "filename": "PointPlayroomPainting1.jpg"
+      },
+      {
+        "top": 248,
+        "left": 491,
+        "width": 83,
+        "height": 122,
+        "filename": "PointPlayroomPainting2.jpg"
+      },
+      {
+        "top": 255,
+        "left": 679,
+        "width": 114,
+        "height": 96,
+        "filename": "PointPlayroomPainting3.jpg"
+      },
+      {
+        "top": 175,
+        "left": 1004,
+        "width": 65,
+        "height": 133,
+        "filename": "PointPlayroomPainting4.jpg"
+      },
+      {
+        "top": 174,
+        "left": 1238,
+        "width": 175,
+        "height": 240,
+        "filename": "PointPlayroomPainting5.jpg"
+      },
+      {
+        "top": 138,
+        "left": 1547,
+        "width": 188,
+        "height": 273,
+        "filename": "PointPlayroomPainting6.jpg"
+      },
+      {
+        "top": 174,
+        "left": 4423,
+        "width": 125,
+        "height": 160,
+        "filename": "PointPlayroomPainting7.jpg"
+      },
+      {
+        "top": 429,
+        "left": 3005,
+        "width": 172,
+        "height": 82,
+        "filename": "PointPlayroomPhotos1.jpg"
+      },
+      {
+        "top": 431,
+        "left": 2283,
+        "width": 152,
+        "height": 70,
+        "filename": "PointPlayroomPhotos2.jpg"
+      }
     ]
   },
-  "PointHallPainting1.jpg" : {
-    "scrollingImage" : false,
-    "isPointOfInterest" : true,
-    "locationPointers" : [
+  "PanGarden.jpg": {
+    "scrollingImage": true,
+    "locationPointers": [
       {
-        "filename" : "PanHall.jpg"
+        "top": 220,
+        "left": 3270,
+        "width": 130,
+        "height": 220,
+        "filename": "PanKitchen.jpg",
+        "newBgPosX": 2150
+      },
+      {
+        "top": 140,
+        "left": 6500,
+        "width": 300,
+        "height": 320,
+        "filename": "PanGarden2.jpg",
+        "newBgPosX": 3670
+      },
+      {
+        "top": 200,
+        "left": 3450,
+        "width": 150,
+        "height": 230,
+        "filename": "PanSunroom.jpg",
+        "newBgPosX": 120
+      },
+      {
+        "top": 220,
+        "left": 2790,
+        "width": 80,
+        "height": 280,
+        "filename": "PanGarage.jpg",
+        "newBgPosX": 120
+      },
+      {
+        "top": 0,
+        "left": 3200,
+        "width": 600,
+        "height": 50,
+        "filename": "PanGardenHigh.jpg",
+        "newBgPosX": 3670
+      }
+    ]
+  },
+  "PanGarden2.jpg": {
+    "scrollingImage": true,
+    "locationPointers": [
+      {
+        "top": 280,
+        "left": 6350,
+        "width": 350,
+        "height": 320,
+        "filename": "PanGarden.jpg",
+        "newBgPosX": 2840
+      }
+    ]
+  },
+  "PanSunroom.jpg": {
+    "scrollingImage": true,
+    "locationPointers": [
+      {
+        "top": 10,
+        "left": 0,
+        "width": 460,
+        "height": 820,
+        "filename": "PanPlayroom.jpg",
+        "newBgPosX": 220
+      },
+      {
+        "top": 30,
+        "left": 3620,
+        "width": 340,
+        "height": 800,
+        "filename": "PanGarden.jpg",
+        "newBgPosX": 600
+      }
+    ]
+  },
+  "SingleStairsUpToLanding.jpg": {
+    "scrollingImage": false,
+    "locationPointers": [
+      {
+        "top": 300,
+        "left": 150,
+        "width": 700,
+        "height": 800,
+        "filename": "PanLandingAtStairs.jpg",
+        "newBgPosX": 2010
+      },
+      {
+        "top": 13,
+        "left": 348,
+        "width": 322,
+        "height": 83,
+        "filename": "PointLandingLight.jpg"
+      }
+    ]
+  },
+  "SingleStairsDownToCorridor.jpg": {
+    "scrollingImage": false,
+    "locationPointers": [
+      {
+        "top": 300,
+        "left": 150,
+        "width": 700,
+        "height": 800,
+        "filename": "PanCorridor.jpg",
+        "newBgPosX": 2760
+      }
+    ]
+  },
+  "PanLandingAtStairs.jpg": {
+    "scrollingImage": true,
+    "locationPointers": [
+      {
+        "top": 500,
+        "left": 6080,
+        "width": 500,
+        "height": 320,
+        "filename": "SingleStairsDownToCorridor.jpg",
+        "newBgPosX": 0
+      },
+      {
+        "top": 10,
+        "left": 1000,
+        "width": 400,
+        "height": 820,
+        "filename": "PanLandingAtToilet.jpg",
+        "newBgPosX": 3340
+      },
+      {
+        "top": 10,
+        "left": 2400,
+        "width": 500,
+        "height": 820,
+        "filename": "PanMiddleBedroom.jpg",
+        "newBgPosX": 1330
+      },
+      {
+        "top": 10,
+        "left": 4990,
+        "width": 100,
+        "height": 820,
+        "filename": "PanBathroom.jpg",
+        "newBgPosX": 1300
+      },
+      {
+        "top": 50,
+        "left": 4680,
+        "width": 250,
+        "height": 700,
+        "filename": "PanMumsBedroom.jpg",
+        "newBgPosX": 2280
+      },
+      {
+        "top": 150,
+        "left": 0,
+        "width": 230,
+        "height": 680,
+        "filename": "SingleStairsToWindow.jpg"
+      },
+      {
+        "top": 750,
+        "left": 4244,
+        "width": 366,
+        "height": 99,
+        "filename": "PointLandingBasket.jpg"
+      },
+      {
+        "top": 427,
+        "left": 4577,
+        "width": 86,
+        "height": 318,
+        "filename": "PointLandingBookcase.jpg"
+      },
+      {
+        "top": 9,
+        "left": 6412,
+        "width": 334,
+        "height": 98,
+        "filename": "PointLandingLight.jpg"
+      },
+      {
+        "top": 235,
+        "left": 4547,
+        "width": 120,
+        "height": 170,
+        "filename": "PointPiggyBank.jpg"
+      },
+      {
+        "top": 170,
+        "left": 6234,
+        "width": 376,
+        "height": 307,
+        "filename": "PointStairsWindow.jpg"
+      },
+      {
+        "top": 96,
+        "left": 1593,
+        "width": 131,
+        "height": 425,
+        "filename": "PointLandingPicture1.jpg"
+      },
+      {
+        "top": 147,
+        "left": 4108,
+        "width": 147,
+        "height": 294,
+        "filename": "PointLandingPicture2.jpg"
+      }
+    ]
+  },
+  "PanLandingAtToilet.jpg": {
+    "scrollingImage": true,
+    "locationPointers": [
+      {
+        "top": 10,
+        "left": 6100,
+        "width": 200,
+        "height": 820,
+        "filename": "PanLandingAtStairs.jpg",
+        "newBgPosX": 1970
+      },
+      {
+        "top": 10,
+        "left": 4400,
+        "width": 400,
+        "height": 820,
+        "filename": "PanDadsBedroom.jpg",
+        "newBgPosX": 2300
+      },
+      {
+        "top": 10,
+        "left": 2830,
+        "width": 500,
+        "height": 820,
+        "filename": "PanFrontBedroom.jpg",
+        "newBgPosX": 2700
+      },
+      {
+        "top": 461,
+        "left": 5945,
+        "width": 141,
+        "height": 369,
+        "filename": "PointLandingBasket.jpg"
+      },
+      {
+        "top": 267,
+        "left": 6002,
+        "width": 94,
+        "height": 190,
+        "filename": "PointLandingBookcase.jpg"
+      },
+      {
+        "top": 10,
+        "left": 6311,
+        "width": 183,
+        "height": 58,
+        "filename": "PointLandingLight.jpg"
+      },
+      {
+        "top": 6,
+        "left": 5431,
+        "width": 203,
+        "height": 499,
+        "filename": "PointLandingPicture1.jpg"
+      },
+      {
+        "top": 168,
+        "left": 5932,
+        "width": 28,
+        "height": 109,
+        "filename": "PointLandingPicture2.jpg"
+      }
+    ]
+  },
+  "PanMiddleBedroom.jpg": {
+    "scrollingImage": true,
+    "locationPointers": [
+      {
+        "top": 100,
+        "left": 1130,
+        "width": 250,
+        "height": 720,
+        "filename": "PanLandingAtStairs.jpg",
+        "newBgPosX": 910
+      }
+    ]
+  },
+  "PanDadsBedroom.jpg": {
+    "scrollingImage": true,
+    "locationPointers": [
+      {
+        "top": 100,
+        "left": 850,
+        "width": 250,
+        "height": 750,
+        "filename": "PanLandingAtToilet.jpg",
+        "newBgPosX": 4780
+      },
+      {
+        "top": 233,
+        "left": 106,
+        "width": 208,
+        "height": 152,
+        "filename": "PointDadsBedroomPainting1.jpg"
+      },
+      {
+        "top": 282,
+        "left": 1350,
+        "width": 195,
+        "height": 159,
+        "filename": "PointDadsBedroomPainting2.jpg"
+      },
+      {
+        "top": 197,
+        "left": 1648,
+        "width": 237,
+        "height": 177,
+        "filename": "PointDadsBedroomPainting3.jpg"
+      },
+      {
+        "top": 271,
+        "left": 2063,
+        "width": 268,
+        "height": 184,
+        "filename": "PointDadsBedroomPainting4.jpg"
+      },
+      {
+        "top": 171,
+        "left": 2492,
+        "width": 234,
+        "height": 187,
+        "filename": "PointDadsBedroomPainting5.jpg"
+      },
+      {
+        "top": 253,
+        "left": 2845,
+        "width": 162,
+        "height": 155,
+        "filename": "PointDadsBedroomPainting6.jpg"
+      },
+      {
+        "top": 190,
+        "left": 3124,
+        "width": 169,
+        "height": 142,
+        "filename": "PointDadsBedroomPainting7.jpg"
+      },
+      {
+        "top": 291,
+        "left": 6817,
+        "width": 114,
+        "height": 157,
+        "filename": "PointDadsBedroomBowties.jpg"
+      },
+      {
+        "top": 9,
+        "left": 4094,
+        "width": 329,
+        "height": 40,
+        "filename": "PointDadsBedroomLight.jpg"
+      },
+      {
+        "top": 255,
+        "left": 3812,
+        "width": 518,
+        "height": 193,
+        "filename": "PointDadsBedroomWindow.jpg"
+      }
+    ]
+  },
+  "PanGarage.jpg": {
+    "scrollingImage": true,
+    "locationPointers": [
+      {
+        "top": 220,
+        "left": 460,
+        "width": 370,
+        "height": 620,
+        "filename": "PanKitchen.jpg",
+        "newBgPosX": 1270
+      },
+      {
+        "top": 20,
+        "left": 3800,
+        "width": 350,
+        "height": 820,
+        "filename": "PanGarden.jpg",
+        "newBgPosX": 1530
+      },
+      {
+        "top": 417,
+        "left": 930,
+        "width": 77,
+        "height": 305,
+        "filename": "PointGarageStickers.jpg"
+      }
+    ]
+  },
+  "PanFrontBedroom.jpg": {
+    "scrollingImage": true,
+    "locationPointers": [
+      {
+        "top": 10,
+        "left": 50,
+        "width": 500,
+        "height": 820,
+        "filename": "PanLandingAtToilet.jpg",
+        "newBgPosX": 1400
+      },
+      {
+        "top": 6,
+        "left": 6350,
+        "width": 415,
+        "height": 298,
+        "filename": "PointFrontBedroomPicture1.jpg"
+      },
+      {
+        "top": 3,
+        "left": 2041,
+        "width": 211,
+        "height": 191,
+        "filename": "PointFrontBedroomPicture2.jpg"
+      },
+      {
+        "top": 1,
+        "left": 3327,
+        "width": 199,
+        "height": 216,
+        "filename": "PointFrontBedroomPicture3.jpg"
+      }
+    ]
+  },
+  "PanBathroom.jpg": {
+    "scrollingImage": true,
+    "locationPointers": [
+      {
+        "top": 10,
+        "left": 5650,
+        "width": 200,
+        "height": 820,
+        "filename": "PanLandingAtStairs.jpg",
+        "newBgPosX": 4530
+      }
+    ]
+  },
+  "PanMumsBedroom.jpg": {
+    "scrollingImage": true,
+    "locationPointers": [
+      {
+        "top": 100,
+        "left": 6760,
+        "width": 150,
+        "height": 730,
+        "filename": "PanLandingAtStairs.jpg",
+        "newBgPosX": 4530
+      },
+      {
+        "top": 586,
+        "left": 4198,
+        "width": 553,
+        "height": 264,
+        "filename": "PointMumsBed.jpg"
+      },
+      {
+        "top": 642,
+        "left": 6149,
+        "width": 545,
+        "height": 205,
+        "filename": "PointMumsDresser.jpg"
+      },
+      {
+        "top": 20,
+        "left": 2260,
+        "width": 625,
+        "height": 825,
+        "filename": "PointMumsBedroomWindow.jpg"
+      },
+      {
+        "top": 424,
+        "left": 61,
+        "width": 423,
+        "height": 228,
+        "filename": "PointMumsBrushes.jpg"
+      },
+      {
+        "top": 732,
+        "left": 5286,
+        "width": 313,
+        "height": 120,
+        "filename": "PointDadsRadio.jpg"
+      }
+    ]
+  },
+  "SingleStairsToWindow.jpg": {
+    "scrollingImage": false,
+    "locationPointers": [
+      {
+        "top": 50,
+        "left": 50,
+        "width": 150,
+        "height": 800,
+        "filename": "SingleDoorToTopRoom.jpg"
+      },
+      {
+        "top": 253,
+        "left": 326,
+        "width": 608,
+        "height": 377,
+        "filename": "PointTopStairsWindow.jpg"
+      }
+    ]
+  },
+  "SingleDoorToTopRoom.jpg": {
+    "scrollingImage": false,
+    "locationPointers": [
+      {
+        "top": 30,
+        "left": 260,
+        "width": 600,
+        "height": 1200,
+        "filename": "PanTopBedroom.jpg",
+        "newBgPosX": 0
+      }
+    ]
+  },
+  "PanTopBedroom.jpg": {
+    "scrollingImage": true,
+    "locationPointers": [
+      {
+        "top": 200,
+        "left": 3440,
+        "width": 300,
+        "height": 640,
+        "filename": "SingleStairsDownToLanding.jpg"
+      },
+      {
+        "top": 175,
+        "left": 4998,
+        "width": 353,
+        "height": 670,
+        "filename": "PanBoxRoom.jpg",
+        "newBgPosX": 2820
+      },
+      {
+        "top": 130,
+        "left": 4977,
+        "width": 90,
+        "height": 37,
+        "filename": "PointSecretHole.jpg"
+      },
+      {
+        "top": 220,
+        "left": 1245,
+        "width": 576,
+        "height": 482,
+        "filename": "PointTopBedroomWindow.jpg"
+      },
+      {
+        "top": 603,
+        "left": 6013,
+        "width": 221,
+        "height": 160,
+        "filename": "PointTypewriter.jpg"
+      }
+    ]
+  },
+  "SingleStairsDownToLanding.jpg": {
+    "scrollingImage": false,
+    "locationPointers": [
+      {
+        "top": 930,
+        "left": 300,
+        "width": 600,
+        "height": 300,
+        "filename": "PanLandingAtStairs.jpg",
+        "newBgPosX": 3670
+      },
+      {
+        "top": 330,
+        "left": 420,
+        "width": 220,
+        "height": 580,
+        "filename": "PanMiddleBedroom.jpg",
+        "newBgPosX": 1330
+      }
+    ]
+  },
+  "PanBoxRoom.jpg": {
+    "scrollingImage": true,
+    "locationPointers": [
+      {
+        "top": 50,
+        "left": 0,
+        "width": 200,
+        "height": 800,
+        "filename": "PanTopBedroom.jpg",
+        "newBgPosX": 4340
+      }
+    ]
+  },
+  "PanGardenHigh.jpg": {
+    "scrollingImage": true,
+    "locationPointers": [
+      {
+        "top": 800,
+        "left": 1450,
+        "width": 600,
+        "height": 50,
+        "filename": "PanGarden.jpg",
+        "newBgPosX": 3100
+      }
+    ]
+  },
+  "SingleLoungeChest.jpg": {
+    "scrollingImage": false,
+    "locationPointers": [
+      {
+        "top": 0,
+        "left": 340,
+        "width": 600,
+        "height": 50,
+        "filename": "PanLounge.jpg",
+        "newBgPosX": 210
+      },
+      {
+        "top": 470,
+        "left": 730,
+        "width": 350,
+        "height": 300,
+        "filename": "PointChestPhotos.jpg"
       }
     ]
   }

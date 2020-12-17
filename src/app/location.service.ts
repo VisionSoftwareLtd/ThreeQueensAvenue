@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Location } from './model/location';
 import { LocationPointer } from './model/location-pointer';
 import * as locationJson from '../assets/locations.json';
+import * as pointsOfInterestJson from '../assets/pointsOfInterest.json';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class LocationService {
 
   constructor() {
     this.initialiselocations();
+    this.initialisePointsOfInterest();
   }
 
   initialiselocations() {
@@ -24,7 +26,7 @@ export class LocationService {
         filename: key,
         scrollingImage: locationObject.scrollingImage,
         locationPointers: [],
-        isPointOfInterest: locationObject.isPointOfInterest ?? false
+        isPointOfInterest: false
       }
       for (var location in locationPointerArray) {
         const locationPointer: LocationPointer = {
@@ -36,6 +38,26 @@ export class LocationService {
           newBgPosX: locationPointerArray[location].newBgPosX ?? 0
         }
         newLocation.locationPointers.push(locationPointer);
+      }
+      this.locations.push(newLocation);
+    }
+  }
+
+  initialisePointsOfInterest() {
+    for (var pointOfInterest of pointsOfInterestJson['default']) {
+      const blankLocationPointer: LocationPointer = {
+        filename: '',
+        top: 0,
+        left: 0,
+        width: 0,
+        height: 0,
+        newBgPosX: 0
+      };
+      const newLocation: Location = {
+        filename: pointOfInterest,
+        scrollingImage: false,
+        locationPointers: [blankLocationPointer],
+        isPointOfInterest: true
       }
       this.locations.push(newLocation);
     }
