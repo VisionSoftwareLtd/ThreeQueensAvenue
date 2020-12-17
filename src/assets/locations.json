@@ -31,6 +31,13 @@
         "newBgPosX": 1150
       },
       {
+        "top": 304,
+        "left": 3935,
+        "width": 560,
+        "height": 495,
+        "filename": "SingleFrontDoor.jpg"
+      },
+      {
         "top": 80,
         "left": 1430,
         "width": 270,
@@ -67,8 +74,8 @@
       },
       {
         "top": 20,
-        "left": 5650,
-        "width": 350,
+        "left": 5680,
+        "width": 320,
         "height": 830,
         "filename": "PointGrandfatherClock.jpg"
       },
@@ -113,6 +120,13 @@
         "width": 553,
         "height": 208,
         "filename": "PointHallWindow.jpg"
+      },
+      {
+        "top": 707,
+        "left": 5459,
+        "width": 180,
+        "height": 125,
+        "filename": "PointWalkingSticks.jpg"
       }
     ]
   },
@@ -120,12 +134,33 @@
     "scrollingImage": false,
     "locationPointers": [
       {
-        "top": 230,
-        "left": 540,
-        "width": 250,
-        "height": 500,
+        "top": 275,
+        "left": 576,
+        "width": 196,
+        "height": 451,
         "filename": "PanHall.jpg",
         "newBgPosX": 4217
+      },
+      {
+        "top": 540,
+        "left": 982,
+        "width": 61,
+        "height": 48,
+        "filename": "PointUmbrellaStand.jpg"
+      },
+      {
+        "top": 513,
+        "left": 337,
+        "width": 48,
+        "height": 61,
+        "filename": "PointPorchPlant.jpg"
+      },
+      {
+        "top": 194,
+        "left": 637,
+        "width": 67,
+        "height": 73,
+        "filename": "PointPorchLight.jpg"
       }
     ]
   },
@@ -563,6 +598,27 @@
         "height": 50,
         "filename": "PanGardenHigh.jpg",
         "newBgPosX": 3670
+      },
+      {
+        "top": 257,
+        "left": 2652,
+        "width": 125,
+        "height": 303,
+        "filename": "SingleShedOutside.jpg"
+      },
+      {
+        "top": 447,
+        "left": 3381,
+        "width": 128,
+        "height": 74,
+        "filename": "PointPotFlower.jpg"
+      },
+      {
+        "top": 227,
+        "left": 3048,
+        "width": 99,
+        "height": 289,
+        "filename": "PointOutsideToilets.jpg"
       }
     ]
   },
@@ -576,6 +632,13 @@
         "height": 320,
         "filename": "PanGarden.jpg",
         "newBgPosX": 2840
+      },
+      {
+        "top": 424,
+        "left": 3912,
+        "width": 332,
+        "height": 271,
+        "filename": "PointCompostBins.jpg"
       }
     ]
   },
@@ -919,6 +982,13 @@
         "width": 77,
         "height": 305,
         "filename": "PointGarageStickers.jpg"
+      },
+      {
+        "top": 20,
+        "left": 553,
+        "width": 420,
+        "height": 77,
+        "filename": "PointGarageRoof.jpg"
       }
     ]
   },
@@ -1154,6 +1224,33 @@
         "width": 350,
         "height": 300,
         "filename": "PointChestPhotos.jpg"
+      }
+    ]
+  },
+  "SingleShedOutside.jpg": {
+    "scrollingImage": false,
+    "locationPointers": [
+      {
+        "top": 186,
+        "left": 960,
+        "width": 86,
+        "height": 588,
+        "filename": "PointShedInside.jpg"
+      },
+      {
+        "top": 436,
+        "left": 42,
+        "width": 521,
+        "height": 505,
+        "filename": "PanGarden.jpg",
+        "newBgPosX": 800
+      },
+      {
+        "top": 604,
+        "left": 1136,
+        "width": 85,
+        "height": 99,
+        "filename": "PointWateringCan.jpg"
       }
     ]
   }
