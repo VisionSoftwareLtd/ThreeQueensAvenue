@@ -1,5 +1,10 @@
 * {box-sizing: border-box;}
 
+@keyframes fadeIn {
+  from {opacity: 0.5; transform: scale(0.8);}
+  to {opacity: 1; transform: scale(1);}
+}
+
 .img-zoom-container {
   position: relative;
   color: #00f;
@@ -7,7 +12,7 @@
 
 .img-zoom-lens {
   position: absolute;
-  border: 2px solid #d4d4d4;
+  border: 3px solid #d4d4d4;
   /*set the size of the lens:*/
   width: 100px;
   height: 100px;
@@ -15,5 +20,14 @@
 
 .img-location-pointer {
   position: absolute;
-  border: 2px solid #f00;
+  border: 3px solid #f00;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+}
+
+.img-point-of-interest-pointer {
+  position: absolute;
+  border: 2px solid #0f0;
+  animation-name: fadeIn;
+  animation-duration: 1s;
 }

@@ -68,8 +68,18 @@ export class PanImageViewerComponent implements OnInit {
       that.scaledImageWidth = image.width * that.scalingRatio;
       that.style['background-size'] = `${that.scaledImageWidth}px ${image.height * that.scalingRatio}px`;
       that.setBackgroundPosition();
+      if (that.location.isPointOfInterest) {
+        that.setReturnPointerDiv(image);
+      }
     };
     image.src = this.imagen;
+  }
+
+  setReturnPointerDiv(image: HTMLImageElement) {
+    var locationPointer = this.location.locationPointers.pop();
+    locationPointer.width = image.width;
+    locationPointer.height = image.height;
+    this.location.locationPointers.push(locationPointer);
   }
 
   updateImage(filepath: string, newBgPosX = 0) {
@@ -188,7 +198,16 @@ export class PanImageViewerComponent implements OnInit {
   onLocationClicked(locationPointer: LocationPointer) {
     if (this.locationClickEvent) {
       this.stopScrolling();
+      const otherLocation = this.locationService.getLocation(locationPointer.filename);
+      if (otherLocation.isPointOfInterest) {
+        otherLocation.locationPointers[0].newBgPosX = this.bgPosX;
+      }
       this.locationClickEvent.emit(locationPointer);
     }
+  }
+
+  isPointOfInterest(locationPointer: LocationPointer) {
+    const otherLocation = this.locationService.getLocation(locationPointer.filename);
+    return otherLocation.isPointOfInterest;
   }
 }

@@ -23,14 +23,15 @@ export class LocationService {
       const newLocation: Location = {
         filename: key,
         scrollingImage: locationObject.scrollingImage,
-        locationPointers: []
+        locationPointers: [],
+        isPointOfInterest: locationObject.isPointOfInterest ?? false
       }
       for (var location in locationPointerArray) {
         const locationPointer: LocationPointer = {
-          top: locationPointerArray[location].top,
-          left: locationPointerArray[location].left,
-          width: locationPointerArray[location].width,
-          height: locationPointerArray[location].height,
+          top: locationPointerArray[location].top ?? 0,
+          left: locationPointerArray[location].left ?? 0,
+          width: locationPointerArray[location].width ?? 0,
+          height: locationPointerArray[location].height ?? 0,
           filename: locationPointerArray[location].filename,
           newBgPosX: locationPointerArray[location].newBgPosX ?? 0
         }

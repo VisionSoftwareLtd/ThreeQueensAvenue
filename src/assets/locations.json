@@ -29,6 +29,13 @@
         "height" : 800,
         "filename" : "PanLounge.jpg",
         "newBgPosX" : 1150
+      },
+      {
+        "top" : 80,
+        "left" : 1430,
+        "width" : 270,
+        "height" : 210,
+        "filename" : "PointHallPainting1.jpg"
       }
     ]
   },
@@ -505,6 +512,15 @@
         "filename" : "PanGarden.jpg",
         "newBgPosX" : 3100
      }
+    ]
+  },
+  "PointHallPainting1.jpg" : {
+    "scrollingImage" : false,
+    "isPointOfInterest" : true,
+    "locationPointers" : [
+      {
+        "filename" : "PanHall.jpg"
+      }
     ]
   }
 }

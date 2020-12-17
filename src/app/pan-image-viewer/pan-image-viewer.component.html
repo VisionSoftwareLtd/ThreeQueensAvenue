@@ -12,9 +12,9 @@
       <div *ngIf="((locationPointer.left+locationPointer.width) * scalingRatio + bgPosX)%scaledImageWidth < getWindowWidth()"
         [style.width]="(locationPointer.width * scalingRatio)+'px'"
         [style.height]="(locationPointer.height * scalingRatio)+'px'"
-        [style.left] ="((locationPointer.left * scalingRatio)+bgPosX)%scaledImageWidth+bgXOffsetForCentredImage+'px'"
-        [style.top] ="(locationPointer.top * scalingRatio)+'px'"
-        class="img-location-pointer"
+        [style.left]="((locationPointer.left * scalingRatio)+bgPosX)%scaledImageWidth+bgXOffsetForCentredImage+'px'"
+        [style.top]="(locationPointer.top * scalingRatio)+'px'"
+        [ngClass]="{'img-location-pointer': !isPointOfInterest(locationPointer), 'img-point-of-interest-pointer': isPointOfInterest(locationPointer)}"
         (click)="onLocationClicked(locationPointer)">
       </div>
     </div>
