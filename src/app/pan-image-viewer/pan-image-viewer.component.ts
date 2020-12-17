@@ -35,6 +35,7 @@ export class PanImageViewerComponent implements OnInit {
   bgImagePosX: number = 0;
   bgImagePosY: number = 0;
   bgRepeats: boolean = true;
+  bgXOffsetForCentredImage: number = 0;
 
   constructor(private locationService : LocationService) { }
 
@@ -110,12 +111,13 @@ export class PanImageViewerComponent implements OnInit {
       else if (this.bgPosX > this.scaledImageWidth)
         this.bgPosX -= this.scaledImageWidth;
       this.bgPosX = Math.round(this.bgPosX);
+      this.bgXOffsetForCentredImage = 0;
     } else {
       // Don't use this.style['background-position'] = 'center';
-      // Instead, set bgPosX manually as the x/y pos of the cursor relies on this.bgPosX being set correctly
-      this.bgPosX = window.innerWidth / 2 - this.scaledImageWidth / 2;
+      // Instead, set bgXOffsetForCentredImage manually as the x/y pos of the cursor relies on this.bgXOffsetForCentredImage being set correctly
+      this.bgXOffsetForCentredImage = window.innerWidth / 2 - this.scaledImageWidth / 2;
     }
-    this.style['background-position'] = `${this.bgPosX}px 0px`;
+    this.style['background-position'] = `${this.bgPosX + this.bgXOffsetForCentredImage}px 0px`;
   }
 
   stopScrolling() {
@@ -154,6 +156,7 @@ export class PanImageViewerComponent implements OnInit {
     /*set the position of the lens:*/
     this.posX = Math.round(x);
     this.posY = Math.round(y);
+    this.posX -= this.bgXOffsetForCentredImage;
 
     this.bgImagePosX = this.posX - this.bgPosX;
     if (this.bgImagePosX < 0)
@@ -184,6 +187,7 @@ export class PanImageViewerComponent implements OnInit {
 
   onLocationClicked(locationPointer: LocationPointer) {
     if (this.locationClickEvent) {
+      this.stopScrolling();
       this.locationClickEvent.emit(locationPointer);
     }
   }

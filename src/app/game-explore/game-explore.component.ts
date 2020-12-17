@@ -11,7 +11,7 @@ import * as UrlConstants from '../urlConstants.js';
 })
 export class GameExploreComponent implements OnInit {
 
-  img: string = `${UrlConstants.IMAGES_ROOT}/FrontDoor.jpg`;
+  img: string = `${UrlConstants.IMAGES_ROOT}/SingleFrontDoor.jpg`;
   players: string[];
 
   constructor(private apiService: ApiService, private router: Router) {

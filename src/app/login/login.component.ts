@@ -12,7 +12,7 @@ import * as UrlConstants from '../urlConstants.js';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username = environment.production ? '' : '';
+  username = environment.production ? '' : 'Dave';
   subscription: Subscription;
   img = `${UrlConstants.IMAGES_ROOT}/PanRoad.jpg`;
 
