@@ -3,6 +3,8 @@ import { Location } from '../model/location';
 import { LocationService } from '../location.service';
 import { LocationPointer } from '../model/location-pointer';
 import { ClipboardService } from 'ngx-clipboard';
+import { PlayerService } from '../player.service';
+import { Player } from '../model/player';
 
 @Component({
   selector: 'app-pan-image-viewer',
@@ -37,7 +39,9 @@ export class PanImageViewerComponent implements OnInit {
   bgRepeats: boolean = true;
   bgXOffsetForCentredImage: number = 0;
 
-  constructor(private locationService: LocationService, private clipboardService: ClipboardService) { }
+  constructor(private locationService: LocationService,
+              private clipboardService: ClipboardService,
+              private playerService: PlayerService) { }
 
   ngOnInit(): void {
     this.loadImage();
@@ -228,6 +232,10 @@ export class PanImageViewerComponent implements OnInit {
       console.log('Copied');
     }
     this.isCopying = !this.isCopying;
+  }
+
+  getPlayersAtLocation(locationPointer: LocationPointer): Player[] {
+    return this.playerService.getPlayersAtLocation(locationPointer.filename);
   }
 
   // @Input() lensSize: number = 100;

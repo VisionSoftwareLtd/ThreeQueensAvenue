@@ -18,6 +18,7 @@ export class ApiService {
   }
 
   login(): void {
+    console.log('Login request');
     this.webSocket = new WebSocket(ApiService.API_URL);
     const that = this;
     this.webSocket.onopen = function() {

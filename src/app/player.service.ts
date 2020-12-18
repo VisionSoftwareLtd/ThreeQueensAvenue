@@ -12,7 +12,7 @@ import { ThrowStmt } from '@angular/compiler';
 export class PlayerService {
   private subject = new Subject();
 
-  private players: Player[];
+  private players: Player[] = [];
 
   constructor() { }
 
@@ -33,5 +33,9 @@ export class PlayerService {
 
   subscribe(subscribeFunction: any) : Subscription {
     return this.subject.subscribe(subscribeFunction);
+  }
+
+  getPlayersAtLocation(filename: string): Player[] {
+    return this.players.filter(player => player.location === filename);
   }
 }
