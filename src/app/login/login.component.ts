@@ -5,6 +5,7 @@ import { ApiService } from '../api-service.service';
 import { LocationPointer } from '../model/location-pointer';
 import { environment } from '../../environments/environment';
 import * as UrlConstants from '../constants/urlConstants.js';
+import { PlayerService } from '../player.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   subscription: Subscription;
   img = `${UrlConstants.IMAGES_ROOT}/PanRoad.jpg`;
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService, private router: Router, private playerService: PlayerService) { }
 
   ngOnInit(): void {
   }
@@ -26,11 +27,12 @@ export class LoginComponent implements OnInit {
     var that = this;
     this.subscription = this.apiService.subscribe((data) => {
       var jsonData = JSON.parse(data);
-      if (jsonData.status) {
-        if (jsonData.status == 'Connected') {
-          that.apiService.sendName(that.username);
-          that.router.navigateByUrl(UrlConstants.LOBBY);
-        }
+      if (jsonData.status === 'Connected') {
+        that.apiService.sendName(that.username);
+      } else if (jsonData.status === 'UsernameAccepted') {
+        console.log(`Username accepted: ${that.username}`);
+        that.playerService.self = that.playerService.getPlayerByName(that.username);
+        that.router.navigateByUrl(UrlConstants.LOBBY);
       }
     });
     this.apiService.login();

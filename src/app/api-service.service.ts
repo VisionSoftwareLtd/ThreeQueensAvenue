@@ -3,6 +3,9 @@ import { Subject, Subscription } from 'rxjs';
 import { environment } from './../environments/environment';
 import { PlayerService } from './player.service';
 
+import * as MessageTypeConstants from './constants/messageTypeConstants.js';
+import { Player } from './model/player';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,7 +27,7 @@ export class ApiService {
     this.webSocket.onopen = function() {
       console.log('Connected');
       that.connected = true;
-      that.subject.next(`{ "status" : "Connected" }`);
+      that.subject.next(`{ "${MessageTypeConstants.STATUS}" : "Connected" }`);
     }
     this.webSocket.onmessage = function(event) {
       var data = JSON.parse(event.data);
@@ -34,12 +37,16 @@ export class ApiService {
     this.webSocket.onclose = function() {
       console.log('Connection closed');
       that.connected = false;
-      that.subject.next(`{ "status" : "Disconnected" }`);
+      that.subject.next(`{ "${MessageTypeConstants.STATUS}" : "Disconnected" }`);
     }
   }
 
   processMessage(data: any) {
-    if (data.allPlayerDetails) {
+    if (data.status) {
+      this.subject.next(`{ "${MessageTypeConstants.STATUS}" : "${data.status}" }`);
+    } else if (data.error) {
+      alert(data.error);
+    } else if (data.allPlayerDetails) {
       this.playerService.allPlayerDetailsUpdated(data.allPlayerDetails);
     }
   }
@@ -56,11 +63,19 @@ export class ApiService {
     return this.subject.subscribe(subscribeFunction);
   }
 
-  sendName(username: string) {
+  sendIfConnected(message: string) {
     if (this.connected) {
-      this.webSocket.send(`{ "username" : "${username}" }`);
+      this.webSocket.send(message);
     } else {
       throw new Error('Not connected.');
     }
+  }
+
+  sendName(username: string) {
+    this.sendIfConnected(`{ "${MessageTypeConstants.USERNAME}" : "${username}" }`);
+  }
+
+  updatePlayerLocation(player: Player) {
+    this.sendIfConnected(`{ "${MessageTypeConstants.PLAYER_LOCATION_UPDATED}" : {"player":"${player.name}","location":"${player.location}"} }`);
   }
 }

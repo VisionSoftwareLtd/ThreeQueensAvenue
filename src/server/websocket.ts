@@ -5,8 +5,7 @@ import { PlayerManager } from './playermanager.js';
 import { DEFAULT_PLAYER, Player } from './player.js';
 import { AddressInfo } from 'net';
 import * as path from 'path';
-import * as MessageTypeConstants from './messageTypeConstants.js';
-import { exit } from 'process';
+import * as MessageTypeConstants from '../app/constants/messageTypeConstants.js';
 
 const app = express();
 var PORT: number;
@@ -37,14 +36,20 @@ if (myArgs[0] == 'dev') {
 
 function processIncomingMessage(request, message) {
    console.log(`Incoming message: ${JSON.stringify(message)} from ${request.connection.remoteAddress}`);
-   if (message.username) {
+   if (message[MessageTypeConstants.USERNAME]) {
       const player = PlayerManager.getInstance().findPlayer(request.connection.remoteAddress);
       if (player) {
-         player.name = message.username;
-         PlayerManager.getInstance().updateAllPlayerDetails();
-         // var playerNamesConcat = PlayerManager.getInstance().getPlayers().map(player => '"' + player.name + '"').join(',');
-         // PlayerManager.getInstance().updateAllPlayers(`{ "${MessageTypeConstants.PLAYER_NAMES}" : [${playerNamesConcat}] }`);
+         if (PlayerManager.getInstance().usernameAlreadyExists(message.username)) {
+            player.webSocketClient.send(`{ "${MessageTypeConstants.ERROR}" : "Someone with username ${message[MessageTypeConstants.USERNAME]} is already connected." }`);
+            player.webSocketClient.close();
+         } else {
+            player.name = message[MessageTypeConstants.USERNAME];
+            PlayerManager.getInstance().updateAllPlayerDetails();
+            player.webSocketClient.send(`{ "${MessageTypeConstants.STATUS}" : "UsernameAccepted" }`);
+         }
       }
+   } else if (message[MessageTypeConstants.PLAYER_LOCATION_UPDATED]) {
+      PlayerManager.getInstance().updatePlayerLocation(message[MessageTypeConstants.PLAYER_LOCATION_UPDATED]);
    }
 }
 

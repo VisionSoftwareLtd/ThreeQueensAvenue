@@ -1,5 +1,5 @@
 import { Player } from './player.js';
-import * as MessageTypeConstants from './messageTypeConstants.js';
+import * as MessageTypeConstants from '../app/constants/messageTypeConstants.js';
 
 export class PlayerManager {
   private players: Player[];
@@ -64,5 +64,16 @@ export class PlayerManager {
       }
     });
     PlayerManager.getInstance().updateAllPlayers(`{ "${MessageTypeConstants.ALL_PLAYER_DETAILS}" : ${JSON.stringify(playerDetailsMinimised)} }`);
+  }
+
+  usernameAlreadyExists(username: string): boolean {
+    return this.players.find(player => player.name === username) != undefined;
+  }
+
+  updatePlayerLocation(playerLocationUpdate: any) {
+    console.log(`Player location update: ${playerLocationUpdate.player} moved to ${playerLocationUpdate.location}`);
+    const player = this.players.find(player => player.name == playerLocationUpdate.player);
+    player.location = playerLocationUpdate.location;
+    this.updateAllPlayerDetails();
   }
 }

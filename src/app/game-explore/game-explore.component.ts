@@ -5,7 +5,7 @@ import { LocationPointer } from '../model/location-pointer';
 import { PlayerService } from '../player.service';
 
 import * as UrlConstants from '../constants/urlConstants.js';
-import * as MessageConstants from '../constants/messageConstants.js';
+import * as MessageConstants from '../constants/messageTypeConstants.js';
 import { Player } from '../model/player';
 
 @Component({

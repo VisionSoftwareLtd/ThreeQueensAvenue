@@ -5,6 +5,7 @@ import { LocationPointer } from '../model/location-pointer';
 import { ClipboardService } from 'ngx-clipboard';
 import { PlayerService } from '../player.service';
 import { Player } from '../model/player';
+import { ApiService } from '../api-service.service';
 
 @Component({
   selector: 'app-pan-image-viewer',
@@ -41,7 +42,8 @@ export class PanImageViewerComponent implements OnInit {
 
   constructor(private locationService: LocationService,
               private clipboardService: ClipboardService,
-              private playerService: PlayerService) { }
+              private playerService: PlayerService,
+              private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.loadImage();
@@ -206,6 +208,7 @@ export class PanImageViewerComponent implements OnInit {
         otherLocation.locationPointers[0].newBgPosX = this.bgPosX;
         otherLocation.locationPointers[0].filename = this.location.filename;
       }
+      this.playerService.updatePlayerLocation(this.apiService, locationPointer);
       this.locationClickEvent.emit(locationPointer);
     }
   }
