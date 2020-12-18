@@ -20,6 +20,12 @@ if (myArgs[0] == 'dev') {
    };
    console.log(`Adding fake player: ${JSON.stringify(fakePlayer)}`);
    PlayerManager.getInstance().addPlayer(fakePlayer);
+   // setInterval(() => {
+   //    PlayerManager.getInstance().updatePlayerLocation({
+   //       "player" : fakePlayer.name,
+   //       "location" : fakePlayer.location == 'PanHall.jpg' ? 'PanCorridor.jpg' : 'PanHall.jpg'
+   //    });
+   // },3000);
 } else {
    PORT = 8080;
    var __dirname = path.resolve(path.dirname(''));
