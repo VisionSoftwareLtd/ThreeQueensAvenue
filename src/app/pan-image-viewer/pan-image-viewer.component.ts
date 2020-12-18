@@ -14,13 +14,12 @@ export class PanImageViewerComponent implements OnInit {
   private static SCROLL_SPEED = 12;
 
   @Input('img') imagen: string;
-  @Input() lensSize: number = 100;
   @Input() imgHeight: number = 400;
   @Input() bgPosX: number = 0;
   @Output() locationClickEvent:EventEmitter<LocationPointer> = new EventEmitter<LocationPointer>();
   
-  posX: number = 0; // Used for lens
-  posY: number = 0; // Used for lens
+  posX: number = 0;
+  posY: number = 0;
   scrollXVel: number = 0;
   scrollHandler: NodeJS.Timeout;
   style = {
@@ -90,7 +89,6 @@ export class PanImageViewerComponent implements OnInit {
   }
 
   @ViewChild('img', { static: false, read: ElementRef }) img
-  @ViewChild('lens', { static: false, read: ElementRef }) lens
   @HostListener('mousemove', ['$event'])
   mouseMove(event: any) {
     this.moveLens(event);
@@ -145,14 +143,12 @@ export class PanImageViewerComponent implements OnInit {
     /*get the cursor's x and y positions:*/
     pos = this.getCursorPos(e);
     /*calculate the position of the lens:*/
-    // x = pos.x - (this.lens.nativeElement.offsetWidth / 2);
-    // y = pos.y - (this.lens.nativeElement.offsetHeight / 2);
     x = pos.x;
     y = pos.y;
-    /*prevent the lens from being positioned outside the image:*/
-    if (x > this.img.nativeElement.width - this.lens.nativeElement.offsetWidth) { x = this.img.nativeElement.width - this.lens.nativeElement.offsetWidth; }
+
+    if (x > this.img.nativeElement.width) { x = this.img.nativeElement.width; }
     if (x < 0) { x = 0; }
-    if (y > this.img.nativeElement.height - this.lens.nativeElement.offsetHeight) { y = this.img.nativeElement.height - this.lens.nativeElement.offsetHeight; }
+    if (y > this.img.nativeElement.height) { y = this.img.nativeElement.height; }
     if (y < 0) { y = 0; }
     if (this.location.scrollingImage) {
       if (pos.x < 100)
@@ -233,4 +229,11 @@ export class PanImageViewerComponent implements OnInit {
     }
     this.isCopying = !this.isCopying;
   }
+
+  // @Input() lensSize: number = 100;
+  // @ViewChild('lens', { static: false, read: ElementRef }) lens
+  // if (x > this.img.nativeElement.width - this.lens.nativeElement.offsetWidth) { x = this.img.nativeElement.width - this.lens.nativeElement.offsetWidth; }
+  // if (x < 0) { x = 0; }
+  // if (y > this.img.nativeElement.height - this.lens.nativeElement.offsetHeight) { y = this.img.nativeElement.height - this.lens.nativeElement.offsetHeight; }
+  // if (y < 0) { y = 0; }
 }

@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { ApiService } from '../api-service.service';
 import { LocationPointer } from '../model/location-pointer';
 import { environment } from '../../environments/environment';
-import * as UrlConstants from '../urlConstants.js';
+import * as UrlConstants from '../constants/urlConstants.js';
 
 @Component({
   selector: 'app-login',

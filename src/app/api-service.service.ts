@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { environment } from './../environments/environment';
+import { PlayerService } from './player.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class ApiService {
   private webSocket: WebSocket;
   private connected: boolean;
   
-  constructor() {
+  constructor(private playerService: PlayerService) {
     this.connected = false;
   }
 
@@ -26,13 +27,19 @@ export class ApiService {
     }
     this.webSocket.onmessage = function(event) {
       var data = JSON.parse(event.data);
-      console.log("Message: " + JSON.stringify(data));
-      that.subject.next(JSON.stringify(data));
+      console.log("Message received: " + JSON.stringify(data));
+      that.processMessage(data);
     }
     this.webSocket.onclose = function() {
       console.log('Connection closed');
       that.connected = false;
       that.subject.next(`{ "status" : "Disconnected" }`);
+    }
+  }
+
+  processMessage(data: any) {
+    if (data.allPlayerDetails) {
+      this.playerService.allPlayerDetailsUpdated(data.allPlayerDetails);
     }
   }
 

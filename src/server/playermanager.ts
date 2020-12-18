@@ -17,13 +17,13 @@ export class PlayerManager {
   }
 
   addPlayer(player: Player): boolean {
-    this.removePlayer(player.getRemoteAddress());
-    if (!this.findPlayer(player.getRemoteAddress())) {
-      console.log(`Adding player from remote address:${player.getRemoteAddress()}`)
+    this.removePlayer(player.remoteAddress);
+    if (!this.findPlayer(player.remoteAddress)) {
+      console.log(`Adding player from remote address:${player.remoteAddress}`)
       this.players.push(player);
       return true;
     } else {
-      console.log(`Player from ${player.getRemoteAddress()} already logged in`);
+      console.log(`Player from ${player.remoteAddress} already logged in`);
       return false;
     }
   }
@@ -32,8 +32,8 @@ export class PlayerManager {
     const playerFound = this.findPlayer(remoteAddress);
     if (playerFound === undefined)
       return;
-    playerFound.getWebSocketClient().send(`{ "${MessageTypeConstants.INFO}" : "Closing connection for ${playerFound.getName()} from ${playerFound.getRemoteAddress()}" }`)
-    playerFound.getWebSocketClient().close();
+    playerFound.webSocketClient?.send(`{ "${MessageTypeConstants.INFO}" : "Closing connection for ${playerFound.name} from ${playerFound.remoteAddress}" }`)
+    playerFound.webSocketClient?.close();
     const index = this.players.indexOf(playerFound);
     if (index == -1)
       return;
@@ -45,13 +45,24 @@ export class PlayerManager {
   }
 
   findPlayer(remoteAddress: string): Player {
-    return this.players.find(player => player.getRemoteAddress() == remoteAddress);
+    return this.players.find(player => player.remoteAddress == remoteAddress);
   }
 
   updateAllPlayers(message: string) {
     console.log(`Sending message to ${this.players.length} players:\n${message}`)
     this.players.forEach(player => {
-      player.getWebSocketClient().send(message);
+      player.webSocketClient?.send(message);
     });
+  }
+  
+  updateAllPlayerDetails() {
+    var playerDetailsMinimised = PlayerManager.getInstance().getPlayers().map(player => {
+      return {
+        name: player.name,
+        location: player.location,
+        gameBeingPlayed: player.gameBeingPlayed
+      }
+    });
+    PlayerManager.getInstance().updateAllPlayers(`{ "${MessageTypeConstants.ALL_PLAYER_DETAILS}" : ${JSON.stringify(playerDetailsMinimised)} }`);
   }
 }
