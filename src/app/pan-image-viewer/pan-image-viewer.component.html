@@ -16,7 +16,7 @@
         [style.top]="(locationPointer.top * scalingRatio)+'px'"
         [ngClass]="{'img-location-pointer': !isPointOfInterest(locationPointer), 'img-point-of-interest-pointer': isPointOfInterest(locationPointer)}"
         (click)="onLocationClicked(locationPointer)">
-        <ul>
+        <ul *ngIf="!isPointLocation()">
           <li *ngFor="let player of getPlayersAtLocation(locationPointer)">
             {{player.name}}
           </li>

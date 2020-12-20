@@ -50,7 +50,7 @@ export class PlayerManager {
   }
 
   updateAllPlayers(message: string) {
-    console.log(`Sending message to ${this.players.length} players`);//:\n${message}`);
+    console.log(`Sending message to ${this.players.length} players:\n${message}`);
     this.players.forEach(player => {
       player.webSocketClient?.send(message);
     });

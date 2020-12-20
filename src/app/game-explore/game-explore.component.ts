@@ -42,7 +42,7 @@ export class GameExploreComponent implements OnInit {
   }
 
   getAllPlayers(): string[] {
-    return this.players.map(player => player.name);
+    return this.players.map(player => player.name).sort();
   }
 
   getCurrentLocation(): string {

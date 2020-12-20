@@ -241,6 +241,10 @@ export class PanImageViewerComponent implements OnInit {
     return this.playerService.getPlayersAtLocation(locationPointer.filename);
   }
 
+  isPointLocation(): boolean {
+    return this.location.filename.startsWith('Point');
+  }
+
   // @Input() lensSize: number = 100;
   // @ViewChild('lens', { static: false, read: ElementRef }) lens
   // if (x > this.img.nativeElement.width - this.lens.nativeElement.offsetWidth) { x = this.img.nativeElement.width - this.lens.nativeElement.offsetWidth; }
