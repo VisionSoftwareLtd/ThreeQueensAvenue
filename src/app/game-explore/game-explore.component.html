@@ -1,13 +1,14 @@
 <div>
   <div>
-    <app-pan-image-viewer #panImageViewer [img]="img" [imgHeight]="getWindowHeight()-20" (locationClickEvent)="onLocationClicked($event)"></app-pan-image-viewer>
+    <app-pan-image-viewer #panImageViewer [img]="img" [imgHeight]="getWindowHeight()-50" (locationClickEvent)="onLocationClicked($event)"></app-pan-image-viewer>
   </div>
-  <div class="fixed-position">
+  You are at <strong>{{showCurrentLocation()}}.</strong> Players at location: {{showPlayersAtCurrentLocation()}}
+  <div class="fixed-position" *ngIf="isAtFrontDoor()">
     <ul class="list-group">
       <li class="list-group-item bg-primary">
         <h3 class="list-group-item-heading">Players</h3>
       </li>
-      <li class="list-group-item" *ngFor="let player of players">
+      <li class="list-group-item" *ngFor="let player of getAllPlayers()">
         {{player}}
       </li>
     </ul>

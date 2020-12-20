@@ -15,8 +15,10 @@ import { Player } from '../model/player';
 })
 export class GameExploreComponent implements OnInit {
 
+  private static LOCATION_PREFIXES = ['Single', 'Pan', 'Point'];
+
   img: string = `${UrlConstants.IMAGES_ROOT}/SingleFrontDoor.jpg`;
-  players: string[];
+  players: Player[];
 
   constructor(private apiService: ApiService, private playerService: PlayerService, private router: Router) {
     this.players = [];
@@ -36,11 +38,32 @@ export class GameExploreComponent implements OnInit {
   }
 
   updateAllPlayers(playerDetails: Player[]) {
-    this.players = playerDetails.map((player => player.name));
+    this.players = playerDetails;
   }
 
-  getPlayers(): string[] {
-    return this.players;
+  getAllPlayers(): string[] {
+    return this.players.map(player => player.name);
+  }
+
+  getCurrentLocation(): string {
+    return this.playerService.self.location;
+  }
+
+  showCurrentLocation(): string {
+    const currentLocation:string = this.getCurrentLocation().replace('.jpg','');
+    for (const prefix of GameExploreComponent.LOCATION_PREFIXES) {
+      if (currentLocation.startsWith(prefix))
+        return currentLocation.substring(prefix.length);
+    }
+    return currentLocation;
+  }
+
+  getPlayersAtCurrentLocation(): string[] {
+    return this.players.filter(player => player.location == this.getCurrentLocation()).map(player => player.name).sort();
+  }
+
+  showPlayersAtCurrentLocation(): string {
+    return `${this.getPlayersAtCurrentLocation().join(", ")}`;
   }
 
   @ViewChild('panImageViewer') panImageViewer;
@@ -50,5 +73,9 @@ export class GameExploreComponent implements OnInit {
 
   getWindowHeight() {
     return window.innerHeight;
+  }
+
+  isAtFrontDoor() {
+    return this.getCurrentLocation() === 'SingleFrontDoor.jpg';
   }
 }

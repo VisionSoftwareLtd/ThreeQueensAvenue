@@ -10,6 +10,6 @@ export interface Player {
 
 export const DEFAULT_PLAYER: Player = {
   name: 'New player',
-  location: 'PanHall.jpg',
+  location: 'SingleFrontDoor.jpg',
   gameBeingPlayed: GameNames.GAME_EXPLORING
 }
