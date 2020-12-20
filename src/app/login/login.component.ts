@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
       } else if (jsonData.status === 'UsernameAccepted') {
         console.log(`Username accepted: ${that.username}`);
         that.playerService.self = that.playerService.getPlayerByName(that.username);
+        that.apiService.updatePlayerLocation(that.playerService.self);
         that.router.navigateByUrl(UrlConstants.LOBBY);
       }
     });

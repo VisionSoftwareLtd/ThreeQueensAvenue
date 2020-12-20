@@ -30,6 +30,7 @@ export class PlayerManager {
 
   removePlayer(remoteAddress: string) {
     const playerFound = this.findPlayer(remoteAddress);
+    console.log(`Removing player ${playerFound} from ${remoteAddress}`);
     if (playerFound === undefined)
       return;
     playerFound.webSocketClient?.send(`{ "${MessageTypeConstants.INFO}" : "Closing connection for ${playerFound.name} from ${playerFound.remoteAddress}" }`)
@@ -49,7 +50,7 @@ export class PlayerManager {
   }
 
   updateAllPlayers(message: string) {
-    console.log(`Sending message to ${this.players.length} players:\n${message}`)
+    console.log(`Sending message to ${this.players.length} players`);//:\n${message}`);
     this.players.forEach(player => {
       player.webSocketClient?.send(message);
     });

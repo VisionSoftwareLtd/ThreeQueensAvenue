@@ -13,19 +13,19 @@ var myArgs = process.argv.slice(3);
 console.log('myArgs: ', myArgs);
 if (myArgs[0] == 'dev') {
    PORT = 8081;
-   const fakePlayer: Player = {
-      ...DEFAULT_PLAYER,
-      name: 'Fake player',
-      remoteAddress: 'localhost:1234'
-   };
-   console.log(`Adding fake player: ${JSON.stringify(fakePlayer)}`);
-   PlayerManager.getInstance().addPlayer(fakePlayer);
-   setInterval(() => {
-      PlayerManager.getInstance().updatePlayerLocation({
-         "player" : fakePlayer.name,
-         "location" : fakePlayer.location == 'PanHall.jpg' ? 'PanCorridor.jpg' : 'PanHall.jpg'
-      });
-   },3000);
+   // const fakePlayer: Player = {
+   //    ...DEFAULT_PLAYER,
+   //    name: 'Fake player',
+   //    remoteAddress: 'localhost:1234'
+   // };
+   // console.log(`Adding fake player: ${JSON.stringify(fakePlayer)}`);
+   // PlayerManager.getInstance().addPlayer(fakePlayer);
+   // setInterval(() => {
+   //    PlayerManager.getInstance().updatePlayerLocation({
+   //       "player" : fakePlayer.name,
+   //       "location" : fakePlayer.location == 'PanHall.jpg' ? 'PanCorridor.jpg' : 'PanHall.jpg'
+   //    });
+   // },3000);
 } else {
    PORT = 8080;
    var __dirname = path.resolve(path.dirname(''));
@@ -79,7 +79,7 @@ webSocketServer.on('connection', (webSocketClient, request) => {
    });
    webSocketClient.on('close', () => {
       console.log(`Stopping client connection.`);
-      PlayerManager.getInstance().removePlayer(webSocketClient);
+      PlayerManager.getInstance().removePlayer(request.connection.remoteAddress);
    });
 });
 
