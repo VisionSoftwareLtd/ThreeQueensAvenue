@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
         that.playerService.self = that.playerService.getPlayerByName(that.username);
         that.apiService.updatePlayerLocation(that.playerService.self);
         that.router.navigateByUrl(UrlConstants.LOBBY);
+        that.subscription.unsubscribe();
       }
     });
     this.apiService.login();

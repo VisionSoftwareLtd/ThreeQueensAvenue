@@ -15,6 +15,7 @@ export class ApiService {
   private subject = new Subject();
   private webSocket: WebSocket;
   private connected: boolean;
+  private pendingMessage: string;
   
   constructor(private playerService: PlayerService) {
     this.connected = false;
@@ -37,6 +38,7 @@ export class ApiService {
     this.webSocket.onclose = function() {
       console.log('Connection closed');
       that.connected = false;
+      that.webSocket = undefined;
       that.subject.next(`{ "${MessageTypeConstants.STATUS}" : "Disconnected" }`);
     }
   }
@@ -66,6 +68,22 @@ export class ApiService {
   sendIfConnected(message: string) {
     if (this.connected) {
       this.webSocket.send(message);
+    } else if (this.playerService.self?.name) {
+      console.log('Disconnected, attempting to reconnect');
+      // this.pendingMessage = message;
+      // const that = this;
+      // this.subscribe((data: string) => {
+      //   var jsonData = JSON.parse(data);
+      //   if (jsonData.status === 'Connected') {
+      //     that.sendName(that.playerService.self.name);
+      //   } else if (jsonData.status === 'UsernameAccepted') {
+      //     console.log(`Username accepted: ${that.playerService.self.name}`);
+      //     that.webSocket.send(that.pendingMessage);
+      //     that.pendingMessage = null;
+      //     that.subject.unsubscribe();
+      //   }
+      // });
+      // this.login();
     } else {
       throw new Error('Not connected.');
     }
@@ -76,6 +94,6 @@ export class ApiService {
   }
 
   updatePlayerLocation(player: Player) {
-    this.sendIfConnected(`{ "${MessageTypeConstants.PLAYER_LOCATION_UPDATED}" : {"player":"${player.name}","location":"${player.location}"} }`);
+    this.sendIfConnected(`{ "${MessageTypeConstants.PLAYER_LOCATION_UPDATED}" : {"player":"${player?.name}","location":"${player?.location}"} }`);
   }
 }

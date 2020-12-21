@@ -5,7 +5,6 @@ import { LocationPointer } from '../model/location-pointer';
 import { ClipboardService } from 'ngx-clipboard';
 import { PlayerService } from '../player.service';
 import { Player } from '../model/player';
-import { ApiService } from '../api-service.service';
 
 @Component({
   selector: 'app-pan-image-viewer',
@@ -42,8 +41,7 @@ export class PanImageViewerComponent implements OnInit {
 
   constructor(private locationService: LocationService,
               private clipboardService: ClipboardService,
-              private playerService: PlayerService,
-              private apiService: ApiService) { }
+              private playerService: PlayerService) { }
 
   ngOnInit(): void {
     this.loadImage();
@@ -208,7 +206,6 @@ export class PanImageViewerComponent implements OnInit {
         otherLocation.locationPointers[0].newBgPosX = this.bgPosX;
         otherLocation.locationPointers[0].filename = this.location.filename;
       }
-      this.playerService.updatePlayerLocation(this.apiService, locationPointer);
       this.locationClickEvent.emit(locationPointer);
     }
   }
@@ -231,8 +228,8 @@ export class PanImageViewerComponent implements OnInit {
     } else {
       this.copyWidth = this.bgImagePosX - this.copyLeft;
       this.copyHeight = this.bgImagePosY - this.copyTop;
-      this.clipboardService.copy(`"top": ${this.copyTop},\n"left": ${this.copyLeft},\n"width": ${this.copyWidth},\n"height": ${this.copyHeight},`);
-      console.log('Copied');
+      // this.clipboardService.copy(`"top": ${this.copyTop},\n"left": ${this.copyLeft},\n"width": ${this.copyWidth},\n"height": ${this.copyHeight},`);
+      // console.log('Copied');
     }
     this.isCopying = !this.isCopying;
   }

@@ -7,6 +7,7 @@ import { PlayerService } from '../player.service';
 import * as UrlConstants from '../constants/urlConstants.js';
 import * as MessageConstants from '../constants/messageTypeConstants.js';
 import { Player } from '../model/player';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-game-explore',
@@ -19,6 +20,7 @@ export class GameExploreComponent implements OnInit {
 
   img: string = `${UrlConstants.IMAGES_ROOT}/SingleFrontDoor.jpg`;
   players: Player[];
+  subscription: Subscription;
 
   constructor(private apiService: ApiService, private playerService: PlayerService, private router: Router) {
     this.players = [];
@@ -68,7 +70,36 @@ export class GameExploreComponent implements OnInit {
 
   @ViewChild('panImageViewer') panImageViewer;
   onLocationClicked(locationPointer: LocationPointer) {
-    this.panImageViewer.updateImage(`${UrlConstants.IMAGES_ROOT}/${locationPointer.filename}`, locationPointer.newBgPosX);
+    if (this.apiService.isConnected()) {
+      this.playerService.updatePlayerLocation(this.apiService, locationPointer);
+      this.panImageViewer.updateImage(`${UrlConstants.IMAGES_ROOT}/${locationPointer.filename}`, locationPointer.newBgPosX);
+    } else {
+      this.attemptReconnectAndMove(locationPointer);
+    }
+  }
+
+  attemptReconnectAndMove(locationPointer: LocationPointer) {
+    if (this.playerService.self?.name) {
+      const username = this.playerService.self?.name;
+      console.log(`Attempting reconnection as ${username}`);
+      var that = this;
+      this.subscription = this.apiService.subscribe((data) => {
+        var jsonData = JSON.parse(data);
+        if (jsonData.status === 'Connected') {
+          that.apiService.sendName(username);
+        } else if (jsonData.status === 'UsernameAccepted') {
+          console.log(`Username accepted: ${username}`);
+          that.playerService.self = that.playerService.getPlayerByName(username);
+          that.apiService.updatePlayerLocation(that.playerService.self);
+          that.subscription.unsubscribe();
+          that.playerService.updatePlayerLocation(that.apiService, locationPointer);
+          that.panImageViewer.updateImage(`${UrlConstants.IMAGES_ROOT}/${locationPointer.filename}`, locationPointer.newBgPosX);
+         }
+      });
+      this.apiService.login();
+    } else {
+      throw Error("Couldn't reconnect");
+    }
   }
 
   getWindowHeight() {

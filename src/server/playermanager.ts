@@ -30,7 +30,7 @@ export class PlayerManager {
 
   removePlayer(remoteAddress: string) {
     const playerFound = this.findPlayer(remoteAddress);
-    console.log(`Removing player ${playerFound} from ${remoteAddress}`);
+    console.log(`Removing player ${playerFound?.name} from ${remoteAddress}`);
     if (playerFound === undefined)
       return;
     playerFound.webSocketClient?.send(`{ "${MessageTypeConstants.INFO}" : "Closing connection for ${playerFound.name} from ${playerFound.remoteAddress}" }`)
