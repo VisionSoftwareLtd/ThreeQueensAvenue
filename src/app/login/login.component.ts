@@ -13,7 +13,8 @@ import { PlayerService } from '../player.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username = environment.production ? '' : 'Dave';
+  username: string = environment.production ? '' : 'Dave';
+  initialBgPosX: number = environment.production ? -536 : -136;
   subscription: Subscription;
   img = `${UrlConstants.IMAGES_ROOT}/PanRoad.jpg`;
 
