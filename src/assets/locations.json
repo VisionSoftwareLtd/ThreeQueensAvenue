@@ -139,7 +139,7 @@
         "width": 196,
         "height": 451,
         "filename": "PanHall.jpg",
-        "newBgPosX": 4217
+        "newBgPosX": 420
       },
       {
         "top": 540,
@@ -340,7 +340,7 @@
         "width": 250,
         "height": 730,
         "filename": "PanCorridor.jpg",
-        "newBgPosX": 4000
+        "newBgPosX": 4644
       },
       {
         "top": 150,
@@ -348,7 +348,7 @@
         "width": 180,
         "height": 500,
         "filename": "PanGarden.jpg",
-        "newBgPosX": 530
+        "newBgPosX": 900
       },
       {
         "top": 80,
@@ -631,7 +631,7 @@
         "width": 350,
         "height": 320,
         "filename": "PanGarden.jpg",
-        "newBgPosX": 2840
+        "newBgPosX": 3370
       },
       {
         "top": 424,
@@ -672,7 +672,7 @@
         "width": 700,
         "height": 800,
         "filename": "PanLandingAtStairs.jpg",
-        "newBgPosX": 2010
+        "newBgPosX": 4070
       },
       {
         "top": 13,
@@ -737,7 +737,7 @@
         "width": 250,
         "height": 700,
         "filename": "PanMumsBedroom.jpg",
-        "newBgPosX": 2280
+        "newBgPosX": 4280
       },
       {
         "top": 150,
@@ -814,7 +814,7 @@
         "width": 400,
         "height": 820,
         "filename": "PanDadsBedroom.jpg",
-        "newBgPosX": 2300
+        "newBgPosX": 3120
       },
       {
         "top": 10,
@@ -890,7 +890,7 @@
         "width": 250,
         "height": 750,
         "filename": "PanLandingAtToilet.jpg",
-        "newBgPosX": 4780
+        "newBgPosX": 5490
       },
       {
         "top": 233,
@@ -1055,7 +1055,7 @@
         "width": 150,
         "height": 730,
         "filename": "PanLandingAtStairs.jpg",
-        "newBgPosX": 4530
+        "newBgPosX": 5200
       },
       {
         "top": 586,
