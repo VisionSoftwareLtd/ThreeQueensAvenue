@@ -10,6 +10,7 @@ import { Player } from './model/player';
   providedIn: 'root'
 })
 export class ApiService {
+  // private static API_URL: string = environment.production ? 'ws://three-queens-avenue.herokuapp.com/:8080' : 'ws://192.168.1.61:8081';
   private static API_URL: string = environment.production ? 'ws://three-queens-avenue.herokuapp.com/:8080' : 'ws://localhost:8081';
 
   private subject = new Subject();

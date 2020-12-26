@@ -1,5 +1,5 @@
 <div class="img-zoom-container" (click)="onClickNoDiv()">
-  <div #img [style.height.px]="imgHeight?imgHeight:null" id="myimage" [ngStyle]="style"></div>
+  <div #img [style.height.px]="imgHeight?imgHeight:null" id="myimage" [ngStyle]="style" (touchstart)="onTouchStart($event)" (touchmove)="onTouchMove($event)" (touchend)="onTouchEnd($event)"></div>
   <!-- <div #lens [style.width]="(lensSize * scalingRatio)+'px'" [style.height]="(lensSize * scalingRatio)+'px'"  [style.left] ="posX+bgXOffsetForCentredImage+'px'" [style.top] ="posY+'px'" class="img-zoom-lens">
     <strong>
       bgPosX:{{bgPosX}}<br />

@@ -15,6 +15,10 @@ export class PanImageViewerComponent implements OnInit {
   private static SCROLL_DELAY = 10;
   private static SCROLL_SPEED = 12;
 
+  private touchXStart: number;
+  private touchBgXStart: number;
+  private isProcessingTouchMove: boolean = false;
+
   @Input('img') imagen: string;
   @Input() imgHeight: number = 400;
   @Input() bgPosX: number = 0;
@@ -26,7 +30,7 @@ export class PanImageViewerComponent implements OnInit {
   scrollHandler: NodeJS.Timeout;
   style = {
     'background-image': '',
-    'background-repeat': 'repeat',
+    'background-repeat': 'repeat-x',
     'background-position': '0px 0px',
     'background-size': '100px 100px'
   };
@@ -240,6 +244,25 @@ export class PanImageViewerComponent implements OnInit {
 
   isPointLocation(): boolean {
     return this.location.filename.startsWith('Point');
+  }
+
+  onTouchStart(event) {
+    this.touchXStart = event.touches[0].clientX;
+    this.touchBgXStart = this.bgPosX;
+  }
+
+  onTouchMove(event) {
+    if (!this.isProcessingTouchMove) {
+      this.isProcessingTouchMove = true;
+      this.bgPosX = event.touches[0].clientX - this.touchXStart + this.touchBgXStart;
+      this.setBackgroundPosition();
+      this.isProcessingTouchMove = false;
+    }
+  }
+
+  onTouchEnd(event) {
+    this.touchXStart = 0;
+    this.touchBgXStart = 0;
   }
 
   // @Input() lensSize: number = 100;
