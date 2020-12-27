@@ -60,8 +60,8 @@ export class PlayerManager {
     var playerDetailsMinimised = PlayerManager.getInstance().getPlayers().map(player => {
       return {
         name: player.name,
-        location: player.location,
-        gameBeingPlayed: player.gameBeingPlayed
+        location: player.location//,
+        // gameBeingPlayed: player.gameBeingPlayed
       }
     });
     PlayerManager.getInstance().updateAllPlayers(`{ "${MessageTypeConstants.ALL_PLAYER_DETAILS}" : ${JSON.stringify(playerDetailsMinimised)} }`);
