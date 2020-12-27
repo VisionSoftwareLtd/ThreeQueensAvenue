@@ -72,9 +72,13 @@ export class PlayerManager {
   }
 
   updatePlayerLocation(playerLocationUpdate: any) {
-    console.log(`Player location update: ${playerLocationUpdate.player} moved to ${playerLocationUpdate.location}`);
     const player = this.players.find(player => player.name == playerLocationUpdate.player);
-    player.location = playerLocationUpdate.location;
-    this.updateAllPlayerDetails();
+    if (player) {
+      console.log(`Player location update: ${playerLocationUpdate.player} moved to ${playerLocationUpdate.location}`);
+      player.location = playerLocationUpdate.location;
+      this.updateAllPlayerDetails();
+    } else {
+      console.log(`Couldn't find player: ${playerLocationUpdate.player} when trying to move to ${playerLocationUpdate.location}`);
+    }
   }
 }

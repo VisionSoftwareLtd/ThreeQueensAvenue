@@ -80,6 +80,7 @@ webSocketServer.on('connection', (webSocketClient, request) => {
    webSocketClient.on('close', () => {
       console.log(`Stopping client connection.`);
       PlayerManager.getInstance().removePlayer(request.connection.remoteAddress);
+      PlayerManager.getInstance().updateAllPlayerDetails();
    });
 });
 
@@ -96,8 +97,8 @@ app.get('/players', function (req, res) {
    const players = PlayerManager.getInstance().getPlayers();
    for (const player of players) {
       playersReturned.push({
-         "name" : player.name,
-         "gameBeingPlayed" : player.gameBeingPlayed
+         "name" : player.name//,
+         // "gameBeingPlayed" : player.gameBeingPlayed
       });
    }
    res.set(httpHeaders);

@@ -43,21 +43,28 @@ export class GameExploreComponent implements OnInit {
     this.players = playerDetails;
   }
 
-  getAllPlayers(): string[] {
-    return this.players.map(player => player.name).sort();
+  getAllPlayers(): Player[] {
+    return this.players.sort((playerA, playerB) => playerA.name.localeCompare(playerB.name));//.map(player => player.name + ":" + this.locationAbbreviation(player.location)).sort();
   }
 
   getCurrentLocation(): string {
-    return this.playerService.self.location;
+    return this.playerService.self?.location;
   }
 
   showCurrentLocation(): string {
-    const currentLocation:string = this.getCurrentLocation().replace('.jpg','');
-    for (const prefix of GameExploreComponent.LOCATION_PREFIXES) {
-      if (currentLocation.startsWith(prefix))
-        return currentLocation.substring(prefix.length);
+    return this.locationAbbreviation(this.getCurrentLocation());
+  }
+
+  private locationAbbreviation(location: string) {
+    if (!location) {
+      return 'Unknown location';
     }
-    return currentLocation;
+    location = location.replace('.jpg','');
+    for (const prefix of GameExploreComponent.LOCATION_PREFIXES) {
+      if (location.startsWith(prefix))
+        return location.substring(prefix.length);
+    }
+    return location;
   }
 
   getPlayersAtCurrentLocation(): string[] {
